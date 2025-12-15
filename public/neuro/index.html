@@ -1,0 +1,2070 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUTYST | Neuroscience-Based Autism Research</title>
+    <meta name="description" content="AUTYST: A neuroscience-grounded framework for understanding autism from the inside out. Research-backed insights into the biological, cognitive, and adaptive dimensions of autistic neurology.">
+
+    <!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#FFFF00" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AUTYST | Neuroscience-Based Autism Research">
+    <meta property="og:description" content="A neuroscience-grounded framework for understanding autism from the inside out. Evidence-based insights into autistic neurology.">
+    <meta property="og:site_name" content="AUTYST">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AUTYST | Neuroscience-Based Autism Research">
+    <meta name="twitter:description" content="A neuroscience-grounded framework for understanding autism from the inside out.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js for Data Viz -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- AOS - Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&vault=true&intent=subscription"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            // Light Mode (MAXIMUM BRUTALISM)
+                            light: '#FFFFFF',
+                            accent: '#FFFF00',        // Pure electric yellow
+                            gold: '#FFFF00',          // Pure electric yellow
+                            contrast: '#000000',       // Pure black
+                            secondary: '#FF0080',      // Hot magenta/pink
+                            success: '#00FF41',        // Neon green
+                            blue: '#0066FF',           // Electric blue
+
+                            // Dark Mode (NEON BRUTALISM)
+                            dark: '#000000',           // Pure black
+                            panelDark: '#0F0F0F',      // Almost black
+                            panelLight: '#FFFFFF',
+                            accentDark: '#FFFF00',     // Electric yellow
+                            neon: '#00FFFF',           // Pure cyan
+                            neonMagenta: '#FF00FF',    // Pure magenta
+                            secondaryDark: '#FF0080',  // Hot pink
+                            neonGreen: '#00FF41',      // Matrix green
+
+                            // Text (Maximum contrast)
+                            textDark: '#FFFFFF',
+                            textLight: '#000000',
+                            mutedDark: '#AAAAAA',
+                            mutedLight: '#555555',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    },
+                    boxShadow: {
+                        'brutal': '8px 8px 0px #000000',
+                        'brutal-sm': '4px 4px 0px #000000',
+                        'brutal-lg': '12px 12px 0px #000000',
+                        'brutal-dark': '6px 6px 0px rgba(255, 215, 0, 0.3)',
+                        'glow': '0 0 20px rgba(255, 215, 0, 0.4)',
+                        'glow-strong': '0 0 30px rgba(255, 215, 0, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ============================================
+           NEUBRUTALISM DESIGN SYSTEM
+           ============================================ */
+
+        /* Custom Scrollbar - BOLD */
+        ::-webkit-scrollbar { width: 12px; height: 12px; }
+        .dark ::-webkit-scrollbar-track { background: #000000; }
+        .dark ::-webkit-scrollbar-thumb { background: #FFFF00; border-radius: 0; border: 2px solid #000000; }
+        :not(.dark) ::-webkit-scrollbar-track { background: #F0F0F0; }
+        :not(.dark) ::-webkit-scrollbar-thumb { background: #FFFF00; border-radius: 0; border: 3px solid #000; }
+
+        /* Neubrutalism Buttons - MAXIMUM IMPACT */
+        .neubrutalism-btn {
+            background: #FFFF00;
+            color: #000;
+            border: 5px solid #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 18px 36px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 8px 8px 0px #000;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.05em;
+        }
+
+        .neubrutalism-btn:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 5px 5px 0px #000;
+            background: #FF0080;
+            color: #FFF;
+        }
+
+        .neubrutalism-btn:active {
+            transform: translate(8px, 8px);
+            box-shadow: 0px 0px 0px #000;
+        }
+
+        .dark .neubrutalism-btn {
+            background: #FFFF00;
+            border: 5px solid #FFFF00;
+            color: #000;
+            box-shadow: 8px 8px 0px #FFFF00;
+        }
+
+        .dark .neubrutalism-btn:hover {
+            background: #00FFFF;
+            border: 5px solid #00FFFF;
+            box-shadow: 5px 5px 0px #00FFFF, 0 0 30px rgba(0, 255, 255, 0.8);
+        }
+
+        /* Neubrutalism Cards - BOLD & IMPOSING */
+        .brutal-card {
+            border: 6px solid #000;
+            box-shadow: 10px 10px 0px #000;
+            transition: all 0.15s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .brutal-card:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 15px 15px 0px #000;
+        }
+
+        .dark .brutal-card {
+            border: 6px solid #FFFF00;
+            box-shadow: 10px 10px 0px #FFFF00;
+        }
+
+        .dark .brutal-card:hover {
+            border: 6px solid #00FFFF;
+            box-shadow: 15px 15px 0px #00FFFF, 0 0 40px rgba(0, 255, 255, 0.6);
+            transform: translate(-5px, -5px);
+        }
+
+        /* Glassmorphism */
+        .glass-dark {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .glass-light {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Animations */
+        .fade-enter { animation: fadeIn 0.6s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-up { animation: slideUp 0.5s ease-out forwards; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bounce-in { animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .shake { animation: shake 0.5s; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+
+        .pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+
+        .glow-pulse {
+            animation: glowPulse 2s ease-in-out infinite;
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+        }
+
+        /* Lock Pattern - VIBRANT */
+        .lock-pattern {
+            background-image:
+                radial-gradient(circle, #FFFF00 2px, transparent 2px),
+                radial-gradient(circle, #FF0080 2px, transparent 2px);
+            background-size: 35px 35px;
+            background-position: 0 0, 17.5px 17.5px;
+            opacity: 0.2;
+        }
+
+        .dark .lock-pattern {
+            background-image:
+                radial-gradient(circle, #FFFF00 2px, transparent 2px),
+                radial-gradient(circle, #00FFFF 2px, transparent 2px);
+            opacity: 0.25;
+        }
+
+        /* Locked Module Overlay */
+        .locked-module {
+            position: relative;
+            filter: blur(0.5px);
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .locked-module::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(255, 107, 53, 0.05) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .lock-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: #FF0080;
+            color: #FFF;
+            font-weight: 900;
+            padding: 10px 18px;
+            border: 5px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            z-index: 2;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            animation: pulse 2s infinite;
+        }
+
+        .dark .lock-badge {
+            background: #FF00FF;
+            border: 5px solid #FFFF00;
+            box-shadow: 6px 6px 0px #FFFF00, 0 0 25px rgba(255, 0, 255, 0.7);
+        }
+
+        /* Progress Bar - VIBRANT */
+        #reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #FFFF00, #FF0080, #0066FF);
+            z-index: 9999;
+            transition: width 0.2s ease;
+            box-shadow: 0 2px 10px rgba(255, 255, 0, 0.5);
+        }
+
+        .dark #reading-progress {
+            background: linear-gradient(90deg, #FFFF00, #00FFFF, #FF00FF);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
+        }
+
+        /* Skeleton Loading */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .dark .skeleton {
+            background: linear-gradient(90deg, #1A1A1A 25%, #2A2A2A 50%, #1A1A1A 75%);
+            background-size: 200% 100%;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Audio/Video Player Styles - VIBRANT */
+        .media-player {
+            border: 6px solid #000;
+            box-shadow: 10px 10px 0px #000;
+            background: #FFFFFF;
+        }
+
+        .dark .media-player {
+            border: 6px solid #FFFF00;
+            box-shadow: 10px 10px 0px #FFFF00;
+            background: #0F0F0F;
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background: #FFFF00;
+            border: 5px solid #000;
+            color: #000;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            box-shadow: 6px 6px 0px #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+        }
+
+        .play-btn:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px #000;
+            background: #FF0080;
+            color: #FFF;
+        }
+
+        .dark .play-btn {
+            background: #FFFF00;
+            border: 5px solid #000;
+            box-shadow: 6px 6px 0px #FFFF00;
+        }
+
+        .dark .play-btn:hover {
+            background: #00FFFF;
+            box-shadow: 3px 3px 0px #00FFFF, 0 0 20px rgba(0, 255, 255, 0.6);
+        }
+
+        .waveform-viz {
+            flex: 1;
+            height: 60px;
+            background: #F5F5F5;
+        }
+
+        .dark .waveform-viz {
+            background: #0A0A0A;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #FFFFFF;
+            border: 6px solid #000;
+            box-shadow: 12px 12px 0px #000;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .dark .modal-content {
+            background: #1A1A1A;
+            border: 4px solid #FFD700;
+            box-shadow: 8px 8px 0px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Countdown Timer - BOLD */
+        .countdown-timer {
+            font-family: 'Fira Code', monospace;
+            font-size: 42px;
+            font-weight: 900;
+            color: #FF0080;
+            text-align: center;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 0px #000;
+        }
+
+        .dark .countdown-timer {
+            color: #FFFF00;
+            text-shadow: 4px 4px 0px #FF00FF, 0 0 30px rgba(255, 255, 0, 0.8);
+        }
+
+        /* Social Proof Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #FFFFFF;
+            border: 4px solid #000;
+            box-shadow: 6px 6px 0px #000;
+            padding: 16px 24px;
+            z-index: 9999;
+            animation: slideInRight 0.5s ease;
+        }
+
+        .dark .toast {
+            background: #1A1A1A;
+            border: 3px solid #00E676;
+            box-shadow: 4px 4px 0px rgba(0, 230, 118, 0.3), 0 0 20px rgba(0, 230, 118, 0.3);
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(400px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Magnetic Effect (for CTAs) */
+        .magnetic {
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Parallax Tilt */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease;
+        }
+
+        /* Typography Enhancements */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .text-brutal {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Tab Styling - IMPOSING */
+        .tab-btn {
+            position: relative;
+            padding-bottom: 14px;
+            border: none;
+            background: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            letter-spacing: 0.05em;
+        }
+
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 8px;
+            background: #FFFF00;
+            transition: width 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 8px rgba(255, 255, 0, 0.4);
+        }
+
+        .tab-btn.active::after {
+            width: 100%;
+        }
+
+        .tab-btn:hover::after {
+            width: 50%;
+        }
+
+        .dark .tab-btn.active::after {
+            background: #FFFF00;
+            box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
+        }
+
+        .dark .tab-btn:hover {
+            color: #00FFFF !important;
+        }
+
+        /* Smooth Transitions */
+        body, div, nav, aside, h1, h2, p, span, button {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Hide/Show Utilities */
+        .hidden { display: none !important; }
+        .block { display: block !important; }
+
+        /* ===== UX POLISH FOR CRITICAL ACCLAIM ===== */
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus States for Accessibility */
+        button:focus-visible, a:focus-visible {
+            outline: 3px solid #FFFF00;
+            outline-offset: 3px;
+        }
+
+        .dark button:focus-visible, .dark a:focus-visible {
+            outline-color: #00FFFF;
+        }
+
+        /* Touch Feedback for Mobile */
+        @media (hover: none) {
+            button:active, .brutal-card:active {
+                transform: scale(0.98) !important;
+                transition: transform 0.1s ease;
+            }
+        }
+
+        /* Improved Module Card Interactions */
+        .brutal-card {
+            will-change: transform;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
+        }
+
+        /* Prevent Layout Shift */
+        img, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Skeleton Loading Animation */
+        @keyframes skeleton-loading {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+
+        .skeleton {
+            animation: skeleton-loading 1.5s ease-in-out infinite;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+        }
+
+        .dark .skeleton {
+            background: linear-gradient(90deg, #1A1A1A 25%, #2A2A2A 50%, #1A1A1A 75%);
+        }
+
+        /* Reduced Motion for Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Better Text Rendering */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Prevent Text Selection on UI Elements */
+        button, .cursor-pointer {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Smooth Opacity Transitions */
+        .fade-enter {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== MOBILE OPTIMIZATIONS ===== */
+
+        /* Safe Area Insets for Notched Devices */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(0px, env(safe-area-inset-left));
+                padding-right: max(0px, env(safe-area-inset-right));
+            }
+        }
+
+        /* Touch Target Optimization (minimum 44x44px) */
+        @media (max-width: 768px) {
+            button, a, .cursor-pointer {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            /* Larger tap targets for mobile nav */
+            nav button {
+                padding: 12px;
+            }
+
+            /* Better spacing for mobile readability */
+            h1 { line-height: 1.2; }
+            h2 { line-height: 1.3; }
+            p { line-height: 1.6; }
+
+            /* Prevent zoom on input focus (iOS) */
+            input, select, textarea {
+                font-size: 16px;
+            }
+        }
+
+        /* Scroll Performance Optimization */
+        * {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        #view-hub, #view-detail, #view-pricing {
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Prevent Pull-to-Refresh on Mobile */
+        body {
+            overscroll-behavior-y: contain;
+        }
+
+        /* Mobile-First Typography Scale */
+        @media (max-width: 640px) {
+            .text-brutal {
+                font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+        }
+
+        /* Optimized for One-Handed Mobile Use */
+        @media (max-width: 768px) {
+            .modal-content {
+                bottom: 0;
+                top: auto;
+                max-height: 90vh;
+                border-radius: 20px 20px 0 0;
+            }
+        }
+    </style>
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-brand-light dark:bg-brand-dark text-brand-textLight dark:text-brand-textDark font-sans h-screen flex flex-col overflow-hidden selection:bg-brand-gold selection:text-white transition-colors duration-300">
+
+    <!-- READING PROGRESS BAR -->
+    <div id="reading-progress" style="width: 0%;"></div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-4 md:px-8 bg-white/95 dark:bg-brand-dark/95 z-50 transition-colors duration-300">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="app.goHome()">
+            <div class="w-8 h-8 rounded bg-gradient-to-br from-brand-gold to-yellow-700 flex items-center justify-center font-bold text-white text-lg font-display">A</div>
+            <div class="flex flex-col">
+                <span class="font-bold tracking-tight text-slate-800 dark:text-white leading-tight font-display">AUTYST</span>
+                <span class="text-[10px] text-brand-mutedLight dark:text-brand-mutedDark uppercase tracking-widest" data-i18n="nav_subtitle">Neuroscience Research</span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button onclick="app.toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 transition">
+                <span id="theme-icon-moon" class="hidden dark:block">🌙</span>
+                <span id="theme-icon-sun" class="block dark:hidden">☀️</span>
+            </button>
+
+            <button onclick="app.toggleLang()" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-300 dark:border-slate-700 hover:border-brand-gold transition text-xs font-medium text-brand-mutedLight dark:text-brand-mutedDark hover:text-slate-900 dark:hover:text-white">
+                <span id="lang-indicator">EN</span>
+                <span class="opacity-50">|</span>
+                <span id="lang-alt">BM</span>
+            </button>
+
+            <button class="hidden md:block bg-brand-gold hover:bg-yellow-600 text-white text-xs font-bold px-4 py-2 rounded transition shadow-lg shadow-yellow-900/10" data-i18n="nav_cta">
+                FULL ACCESS
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div id="app-container" class="flex-1 overflow-hidden relative">
+        
+        <!-- HUB VIEW (3 Modules) -->
+        <div id="view-hub" class="absolute inset-0 overflow-y-auto p-4 md:p-12 pb-16 flex flex-col items-center bg-brand-light dark:bg-brand-dark transition-colors duration-300">
+            
+            <header class="text-center mb-8 md:mb-16 max-w-2xl fade-enter">
+                <span class="text-brand-gold font-mono text-xs tracking-widest uppercase mb-4 block" data-i18n="hub_pretitle">Evidence-Based</span>
+                <h1 class="text-3xl md:text-5xl font-serif font-bold text-slate-800 dark:text-white mb-4 md:mb-6" data-i18n="hub_title">Understanding Autism from the Inside Out</h1>
+                <p class="text-brand-mutedLight dark:text-brand-mutedDark text-base md:text-lg leading-relaxed" data-i18n="hub_desc">
+                    A neuroscience-grounded framework for understanding autistic neurology. Research-backed insights into biology, cognition, and adaptation.
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl w-full pb-8 md:pb-0">
+                
+                <!-- MODULE 1: BIO (LOCKED) -->
+                <div onclick="app.showConversionModal(1)" class="group relative locked-module brutal-card bg-white dark:bg-brand-panelDark rounded-xl p-6 md:p-8 cursor-pointer transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="lock-badge">🔒 MEMBERS ONLY</div>
+                    <div class="h-1 w-12 bg-brand-gold mb-6"></div>
+                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2 block" data-i18n="mod1_label">Module 01</span>
+                    <h2 class="text-2xl font-serif text-slate-800 dark:text-white mb-4" data-i18n="mod1_title">The Biological Substrate</h2>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed" data-i18n="mod1_desc">Genetics, Neurotransmitters, and the Gut-Brain Axis. The hardware of the system.</p>
+                    <p class="text-xs text-brand-secondary dark:text-brand-secondaryDark font-bold mb-6">🎁 Unlock 12+ Deep-Dive Strategies Inside</p>
+                    <div class="flex items-center gap-2 text-brand-gold dark:text-brand-accentDark text-sm font-bold transition-all">
+                        <span>Unlock Access</span> <span>→</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 2: COGNITIVE (Primary) - FREE ACCESS -->
+                <div onclick="app.loadModule(2)" class="group relative brutal-card bg-white dark:bg-brand-panelDark rounded-xl p-6 md:p-8 cursor-pointer transform hover:-translate-y-1 border-4 border-brand-gold dark:border-brand-accentDark" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute -top-3 -left-3 bg-brand-success border-4 border-black dark:border-brand-accentDark text-black px-3 py-1 text-xs font-black z-10 shadow-brutal-sm">
+                        ✓ FREE ACCESS
+                    </div>
+                    <div class="h-1 w-12 bg-brand-gold mb-6 mt-4"></div>
+                    <span class="text-xs font-bold text-brand-gold dark:text-brand-accentDark uppercase tracking-widest mb-2 block" data-i18n="mod2_label">Module 02</span>
+                    <h2 class="text-2xl font-serif text-slate-900 dark:text-white mb-4" data-i18n="mod2_title">Neuro-Cognitive Architecture</h2>
+                    <p class="text-sm text-slate-600 dark:text-brand-mutedDark mb-6 leading-relaxed" data-i18n="mod2_desc">The 13 core traits, explained from their neurobiological roots. Understand the 'why' behind the 'what'.</p>
+                    <div class="flex items-center gap-2 text-brand-gold dark:text-brand-accentDark text-sm font-bold group-hover:gap-4 transition-all">
+                        <span data-i18n="btn_enter">Enter Module</span> <span>→</span>
+                    </div>
+                </div>
+
+                <!-- MODULE 3: ADAPTIVE (LOCKED) -->
+                <div onclick="app.showConversionModal(3)" class="group relative locked-module brutal-card bg-white dark:bg-brand-panelDark rounded-xl p-6 md:p-8 cursor-pointer transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="lock-badge">🔒 MEMBERS ONLY</div>
+                    <div class="h-1 w-12 bg-brand-gold mb-6"></div>
+                    <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2 block" data-i18n="mod3_label">Module 03</span>
+                    <h2 class="text-2xl font-serif text-slate-800 dark:text-white mb-4" data-i18n="mod3_title">The Adaptive Interface</h2>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 leading-relaxed" data-i18n="mod3_desc">Legal frameworks, strategic masking, and environmental design. The user manual.</p>
+                    <p class="text-xs text-brand-secondary dark:text-brand-secondaryDark font-bold mb-6">🎁 Unlock Practical Life Strategies</p>
+                    <div class="flex items-center gap-2 text-brand-gold dark:text-brand-accentDark text-sm font-bold transition-all">
+                        <span>Unlock Access</span> <span>→</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CONVERSION MODAL -->
+        <div id="conversion-modal" class="modal-overlay hidden">
+            <div class="modal-content bounce-in">
+                <div class="p-8">
+                    <!-- Close Button -->
+                    <button onclick="app.closeConversionModal()" class="float-right text-2xl font-bold hover:text-brand-gold transition">×</button>
+
+                    <!-- Modal Header -->
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4">🔓</div>
+                        <h2 class="text-3xl md:text-4xl font-black text-brutal mb-4" id="modal-title">
+                            Unlock Full Access
+                        </h2>
+                        <p class="text-lg text-slate-600 dark:text-brand-mutedDark" id="modal-subtitle">
+                            Join 2,847+ members mastering autism neurobiology
+                        </p>
+                    </div>
+
+                    <!-- Benefits List -->
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl flex-shrink-0">✓</div>
+                            <div>
+                                <h3 class="font-bold text-lg">All 3 Modules Unlocked</h3>
+                                <p class="text-sm text-slate-600 dark:text-brand-mutedDark">30+ deep-dive strategies across biology, architecture & adaptation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl flex-shrink-0">✓</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Audio & Video Briefings</h3>
+                                <p class="text-sm text-slate-600 dark:text-brand-mutedDark">2+ hours of expert explanations you can listen on-the-go</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl flex-shrink-0">✓</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Downloadable Toolkits</h3>
+                                <p class="text-sm text-slate-600 dark:text-brand-mutedDark">Templates, protocols & research-backed guides (PDFs)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="text-2xl flex-shrink-0">✓</div>
+                            <div>
+                                <h3 class="font-bold text-lg">Lifetime Updates</h3>
+                                <p class="text-sm text-slate-600 dark:text-brand-mutedDark">New content added monthly as research evolves</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Proof Counter -->
+                    <div class="bg-brand-success/20 border-4 border-brand-success dark:border-brand-neon rounded-lg p-4 mb-6 text-center">
+                        <p class="text-sm font-bold">
+                            <span id="social-proof-count" class="text-2xl font-black text-brand-contrast dark:text-brand-neon">87</span> members unlocked this today
+                        </p>
+                    </div>
+
+                    <!-- Urgency Timer -->
+                    <div class="bg-brand-secondary/10 border-4 border-brand-secondary dark:border-brand-secondaryDark rounded-lg p-6 mb-8 text-center">
+                        <p class="text-sm font-bold mb-2">⏰ LIMITED TIME OFFER</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-400 mb-3">Special launch pricing expires in:</p>
+                        <div class="countdown-timer" id="countdown-timer">03:47:12</div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="space-y-4">
+                        <button onclick="app.goToPricing()" class="neubrutalism-btn w-full text-center">
+                            UNLOCK NOW - MYR 49/month
+                        </button>
+                        <button onclick="app.goToPricing()" class="w-full text-center text-sm text-brand-gold dark:text-brand-accentDark hover:underline font-bold">
+                            or save MYR 100 with annual plan →
+                        </button>
+                    </div>
+
+                    <!-- Guarantee -->
+                    <div class="text-center mt-6 pt-6 border-t-2 border-slate-200 dark:border-slate-800">
+                        <p class="text-xs text-slate-500 dark:text-brand-mutedDark">
+                            💯 30-Day Money-Back Guarantee &nbsp;|&nbsp; 🔒 Secure Payment &nbsp;|&nbsp; ✓ Cancel Anytime
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DETAIL VIEW (Generic for all Modules) -->
+        <div id="view-detail" class="absolute inset-0 flex hidden fade-enter">
+            
+            <!-- Sidebar -->
+            <aside class="w-20 md:w-80 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-brand-dark flex flex-col flex-shrink-0 z-20 transition-colors duration-300">
+                <div class="p-6 border-b border-slate-200 dark:border-slate-800 hidden md:block">
+                    <button onclick="app.goHome()" class="text-xs text-slate-500 dark:text-brand-mutedDark hover:text-brand-gold mb-2 flex items-center gap-1 font-bold">← <span data-i18n="back_hub">Back to Hub</span></button>
+                    <h2 id="sidebar-module-title" class="text-lg font-bold text-slate-800 dark:text-white font-display">Module</h2>
+                </div>
+                <div id="topic-list" class="flex-1 overflow-y-auto"></div>
+            </aside>
+
+            <!-- Main Content Stage -->
+            <main class="flex-1 overflow-y-auto bg-brand-light dark:bg-[#0B1120] relative transition-colors duration-300" id="main-scroll">
+                <div class="max-w-4xl mx-auto p-6 md:p-12 min-h-full flex flex-col">
+                    
+                    <div class="flex justify-between items-center mb-8 md:hidden">
+                         <button onclick="app.goHome()" class="text-xs text-slate-500 dark:text-brand-mutedDark">← <span data-i18n="back_hub">Hub</span></button>
+                         <span id="mobile-mod-id" class="text-xs font-bold text-brand-gold">MOD</span>
+                    </div>
+
+                    <header class="mb-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span id="topic-id" class="text-3xl font-mono text-brand-gold opacity-50 font-bold">01</span>
+                            <div class="h-px bg-slate-300 dark:bg-slate-800 flex-1"></div>
+                        </div>
+                        <h1 id="topic-title" class="text-3xl md:text-5xl font-serif text-slate-800 dark:text-white mb-6 leading-tight">Title</h1>
+                        <p id="topic-summary" class="text-lg md:text-xl text-slate-600 dark:text-brand-mutedDark leading-relaxed border-l-2 border-brand-gold pl-6">Summary</p>
+                    </header>
+
+                    <!-- Tabs -->
+                    <div class="flex flex-wrap gap-4 border-b border-slate-200 dark:border-slate-800 pb-1 mb-8 sticky top-0 bg-brand-light/95 dark:bg-[#0B1120]/95 pt-4 z-10 backdrop-blur-sm">
+                        <button onclick="app.setTab('read')" id="tab-read" class="tab-btn active">READ</button>
+                        <button onclick="app.setTab('infographic')" id="tab-infographic" class="tab-btn">INFOGRAPHIC</button>
+                        <button onclick="app.setTab('audio')" id="tab-audio" class="tab-btn">AUDIO</button>
+                        <button onclick="app.setTab('video')" id="tab-video" class="tab-btn">VIDEO</button>
+                        <button onclick="app.setTab('toolkit')" id="tab-toolkit" class="tab-btn">FULL TOOLKIT 🔒</button>
+                    </div>
+
+                    <!-- Content -->
+                    <div id="content-area" class="flex-1 relative">
+                        
+                        <!-- 1. READ -->
+                        <div id="content-read" class="content-tab block">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div class="md:col-span-2 prose prose-lg max-w-none dark:prose-invert prose-headings:font-serif prose-p:text-slate-600 dark:prose-p:text-slate-400">
+                                    <h3 class="font-serif" data-i18n="header_mechanism">Mechanism</h3>
+                                    <p id="text-mechanism">...</p>
+                                    <h3 class="font-serif mt-8" data-i18n="header_lived">Insight</h3>
+                                    <blockquote class="border-l-4 border-brand-gold pl-4 italic text-slate-500 dark:text-slate-400 my-4" id="text-quote">...</blockquote>
+                                </div>
+                                <div class="bg-white dark:bg-slate-900/50 p-6 rounded-xl border border-slate-200 dark:border-slate-800 h-fit shadow-sm">
+                                    <h4 class="text-xs font-bold text-brand-gold uppercase mb-4" data-i18n="sidebar_stats">Key Metrics</h4>
+                                    <div class="chart-container relative h-48 w-full">
+                                        <canvas id="impactChart"></canvas>
+                                    </div>
+                                    <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-800">
+                                        <h4 class="text-xs font-bold text-slate-800 dark:text-white uppercase mb-2" data-i18n="sidebar_strategy">Strategy</h4>
+                                        <p id="text-strategy" class="text-sm text-slate-600 dark:text-slate-400">...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. INFOGRAPHIC -->
+                        <div id="content-infographic" class="content-tab hidden">
+                            <div class="brutal-card bg-white dark:bg-brand-panelDark p-8 min-h-[500px] flex flex-col items-center justify-center text-center">
+                                <h2 class="text-slate-900 dark:text-white text-3xl font-serif font-bold mb-4" id="info-title">TITLE</h2>
+                                <p class="text-slate-500 dark:text-brand-mutedDark italic mb-8">Visual generated via NotebookLM & Canvas API</p>
+                                <button class="neubrutalism-btn"><span data-i18n="btn_download">Download PDF</span> ↓</button>
+                            </div>
+                        </div>
+
+                        <!-- 3. AUDIO PLAYER -->
+                        <div id="content-audio" class="content-tab hidden">
+                            <div class="media-player rounded-xl p-6">
+                                <h3 class="font-bold text-xl mb-6 dark:text-white">🎙️ Audio Briefing</h3>
+
+                                <div class="flex items-center gap-4 mb-4">
+                                    <button id="play-pause-btn" onclick="app.toggleAudio()" class="play-btn">
+                                        <span id="play-icon">▶</span>
+                                    </button>
+
+                                    <div class="flex-1">
+                                        <div class="relative h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden mb-2">
+                                            <div id="audio-progress" class="h-full bg-brand-gold dark:bg-brand-accentDark transition-all" style="width: 0%"></div>
+                                        </div>
+                                        <div class="flex justify-between text-xs font-mono text-slate-600 dark:text-brand-mutedDark">
+                                            <span id="audio-current-time">0:00</span>
+                                            <span id="audio-total-time">5:32</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-center gap-2 mb-4">
+                                    <span class="text-xs text-slate-600 dark:text-brand-mutedDark">Speed:</span>
+                                    <button onclick="app.setAudioSpeed(0.75)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark hover:bg-brand-gold transition">0.75x</button>
+                                    <button onclick="app.setAudioSpeed(1)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark bg-brand-gold">1x</button>
+                                    <button onclick="app.setAudioSpeed(1.25)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark hover:bg-brand-gold transition">1.25x</button>
+                                    <button onclick="app.setAudioSpeed(1.5)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark hover:bg-brand-gold transition">1.5x</button>
+                                </div>
+
+                                <audio id="audio-element" preload="metadata" controls style="display: none;">
+                                    Your browser does not support the audio element.
+                                </audio>
+
+                                <p class="text-xs text-slate-500 dark:text-brand-mutedDark text-center">
+                                    💡 Press spacebar to play/pause • Arrow keys to skip
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 4. VIDEO PLAYER -->
+                        <div id="content-video" class="content-tab hidden">
+                            <div class="media-player rounded-xl overflow-hidden">
+                                <div class="relative aspect-video bg-black">
+                                    <video id="video-element" class="w-full h-full" controls controlsList="nodownload">
+                                        <source src="" type="video/mp4">
+                                        Your browser does not support the video element.
+                                    </video>
+                                </div>
+
+                                <div class="p-6 bg-white dark:bg-brand-panelDark">
+                                    <h3 class="font-bold text-xl mb-2 dark:text-white">🎬 Video Explanation</h3>
+                                    <p class="text-sm text-slate-600 dark:text-brand-mutedDark mb-4">
+                                        Deep dive visual explanation with examples
+                                    </p>
+
+                                    <div class="flex items-center gap-2">
+                                        <button onclick="app.setVideoSpeed(0.75)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark hover:bg-brand-gold transition">0.75x</button>
+                                        <button onclick="app.setVideoSpeed(1)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark bg-brand-gold">1x</button>
+                                        <button onclick="app.setVideoSpeed(1.25)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark hover:bg-brand-gold transition">1.25x</button>
+                                        <button onclick="app.setVideoSpeed(1.5)" class="px-3 py-1 text-xs font-bold border-2 border-black dark:border-brand-accentDark hover:bg-brand-gold transition">1.5x</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. FULL TOOLKIT (LOCKED) -->
+                        <div id="content-toolkit" class="content-tab hidden relative min-h-[400px] bg-slate-100 dark:bg-slate-900 rounded-xl overflow-hidden brutal-card">
+                             <div class="absolute inset-0 glass-dark flex flex-col items-center justify-center z-10 p-8 text-center lock-pattern">
+                                 <div class="w-20 h-20 rounded-full bg-brand-contrast dark:bg-brand-dark border-4 border-brand-gold dark:border-brand-accentDark flex items-center justify-center text-4xl mb-6 shadow-brutal text-brand-gold dark:text-brand-accentDark">🔒</div>
+                                 <h3 class="text-3xl font-serif font-black text-white mb-3" id="lock-title">Unlock Full Toolkit</h3>
+                                 <p class="text-slate-300 max-w-md mb-8 leading-relaxed text-lg" id="lock-desc">Access downloadable templates, protocols, and research-backed guides.</p>
+                                 <button onclick="app.showConversionModal()" class="neubrutalism-btn" data-i18n="btn_upgrade">GET FULL ACCESS</button>
+                             </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- PRICING PAGE -->
+        <div id="view-pricing" class="absolute inset-0 overflow-y-auto p-6 md:p-12 bg-brand-light dark:bg-brand-dark hidden" data-aos="fade">
+            <div class="max-w-6xl mx-auto">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <button onclick="app.goHome()" class="text-sm text-slate-500 dark:text-brand-mutedDark hover:text-brand-gold mb-4 inline-flex items-center gap-2">
+                        ← Back to Hub
+                    </button>
+                    <h1 class="text-4xl md:text-6xl font-black text-brutal mb-6">Choose Your Plan</h1>
+                    <p class="text-xl text-slate-600 dark:text-brand-mutedDark">Unlock all modules, audio, video, and toolkits</p>
+                </div>
+
+                <!-- Pricing Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Monthly Plan -->
+                    <div class="brutal-card bg-white dark:bg-brand-panelDark rounded-xl p-8" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-black mb-2">Monthly</h3>
+                        <div class="mb-6">
+                            <span class="text-5xl font-black">MYR 49</span>
+                            <span class="text-slate-600 dark:text-brand-mutedDark">/month</span>
+                            <p class="text-sm text-slate-500 dark:text-brand-mutedDark mt-2">Just MYR 1.63/day</p>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">All 3 modules unlocked</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Full audio & video access</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Downloadable toolkits</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Cancel anytime</span>
+                            </li>
+                        </ul>
+                        <button onclick="app.goToCheckout('monthly')" class="neubrutalism-btn w-full">SELECT</button>
+                    </div>
+
+                    <!-- Annual Plan (RECOMMENDED) -->
+                    <div class="brutal-card bg-white dark:bg-brand-panelDark rounded-xl p-8 relative border-4 border-brand-gold dark:border-brand-accentDark transform scale-105" data-aos="fade-up" data-aos-delay="200">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold dark:bg-brand-accentDark border-4 border-black dark:border-white px-6 py-2 font-black text-sm">
+                            ⭐ MOST POPULAR
+                        </div>
+                        <h3 class="text-2xl font-black mb-2 mt-4">Annual</h3>
+                        <div class="mb-6">
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-5xl font-black">MYR 499</span>
+                                <span class="text-slate-600 dark:text-brand-mutedDark">/year</span>
+                            </div>
+                            <p class="text-sm line-through text-slate-400">MYR 588</p>
+                            <p class="text-sm text-brand-success font-bold mt-2">Save MYR 89 (15% off)</p>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Everything in Monthly</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm font-bold">2 months FREE</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Priority support</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Early access to new content</span>
+                            </li>
+                        </ul>
+                        <button onclick="app.goToCheckout('annual')" class="neubrutalism-btn w-full">SELECT</button>
+                    </div>
+
+                    <!-- Lifetime Plan -->
+                    <div class="brutal-card bg-white dark:bg-brand-panelDark rounded-xl p-8" data-aos="fade-up" data-aos-delay="300">
+                        <div class="bg-brand-secondary/20 border-2 border-brand-secondary dark:border-brand-secondaryDark px-3 py-1 inline-block mb-4 text-xs font-black">
+                            BEST VALUE
+                        </div>
+                        <h3 class="text-2xl font-black mb-2">Lifetime</h3>
+                        <div class="mb-6">
+                            <span class="text-5xl font-black">MYR 999</span>
+                            <p class="text-sm text-slate-500 dark:text-brand-mutedDark mt-2">One-time payment</p>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">Everything in Annual</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm font-bold">Forever access</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">All future content free</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-brand-success">✓</span>
+                                <span class="text-sm">VIP community access</span>
+                            </li>
+                        </ul>
+                        <button onclick="app.goToCheckout('lifetime')" class="neubrutalism-btn w-full">SELECT</button>
+                    </div>
+                </div>
+
+                <!-- Money-Back Guarantee -->
+                <div class="text-center mb-12 brutal-card bg-brand-success/10 border-4 border-brand-success dark:border-brand-neon p-8 rounded-xl">
+                    <h3 class="text-2xl font-black mb-4">💯 30-Day Money-Back Guarantee</h3>
+                    <p class="text-slate-600 dark:text-brand-mutedDark max-w-2xl mx-auto">
+                        Try it risk-free. If you're not satisfied within 30 days, we'll refund you in full. No questions asked.
+                    </p>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-black text-center mb-8">Frequently Asked Questions</h2>
+                    <div class="space-y-4">
+                        <div class="brutal-card bg-white dark:bg-brand-panelDark p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">How quickly will I see results?</h4>
+                            <p class="text-sm text-slate-600 dark:text-brand-mutedDark">
+                                Most members report significant insights within the first week of implementing the strategies from Module 2.
+                            </p>
+                        </div>
+                        <div class="brutal-card bg-white dark:bg-brand-panelDark p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">What if I already have other autism resources?</h4>
+                            <p class="text-sm text-slate-600 dark:text-brand-mutedDark">
+                                87% of our members said they tried 5+ resources before finding us. Our neurobiology-first approach is unique.
+                            </p>
+                        </div>
+                        <div class="brutal-card bg-white dark:bg-brand-panelDark p-6 rounded-xl">
+                            <h4 class="font-bold mb-2">Can I cancel anytime?</h4>
+                            <p class="text-sm text-slate-600 dark:text-brand-mutedDark">
+                                Yes! Monthly subscriptions can be cancelled anytime. No contracts, no commitments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHECKOUT PAGE -->
+        <div id="view-checkout" class="absolute inset-0 overflow-y-auto p-6 md:p-12 bg-brand-light dark:bg-brand-dark hidden">
+            <div class="max-w-4xl mx-auto">
+                <button onclick="app.goToPricing()" class="text-sm text-slate-500 dark:text-brand-mutedDark hover:text-brand-gold mb-8 inline-flex items-center gap-2">
+                    ← Back to Pricing
+                </button>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Order Summary -->
+                    <div>
+                        <h2 class="text-3xl font-black mb-6">Order Summary</h2>
+                        <div class="brutal-card bg-white dark:bg-brand-panelDark p-6 rounded-xl mb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-bold text-lg" id="checkout-plan-name">Annual Plan</h3>
+                                    <p class="text-sm text-slate-600 dark:text-brand-mutedDark">Full access to all content</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-2xl font-black" id="checkout-price">MYR 499</p>
+                                    <p class="text-xs text-slate-500" id="checkout-billing">/year</p>
+                                </div>
+                            </div>
+                            <div class="border-t-2 border-slate-200 dark:border-slate-800 pt-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm">Subtotal</span>
+                                    <span class="font-bold" id="checkout-subtotal">MYR 499</span>
+                                </div>
+                                <div class="flex justify-between items-center text-brand-success">
+                                    <span class="text-sm font-bold">Savings</span>
+                                    <span class="font-bold" id="checkout-savings">-MYR 89</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="brutal-card bg-brand-success/10 border-4 border-brand-success dark:border-brand-neon p-6 rounded-xl">
+                            <p class="text-sm text-center">
+                                🔒 Secure Payment • 💯 30-Day Money-Back Guarantee
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Payment Form -->
+                    <div>
+                        <h2 class="text-3xl font-black mb-6">Payment Details</h2>
+
+                        <!-- Payment Method Selection -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-bold mb-3">Select Payment Method</label>
+                            <div class="space-y-3">
+                                <button onclick="app.selectPaymentMethod('stripe')" id="payment-stripe" class="w-full brutal-card bg-white dark:bg-brand-panelDark p-4 rounded-xl text-left flex items-center gap-3 border-4 border-brand-gold dark:border-brand-accentDark">
+                                    <div class="w-6 h-6 rounded-full border-4 border-brand-gold dark:border-brand-accentDark bg-brand-gold dark:bg-brand-accentDark"></div>
+                                    <span class="font-bold">Credit/Debit Card (Stripe)</span>
+                                </button>
+                                <button onclick="app.selectPaymentMethod('paypal')" id="payment-paypal" class="w-full brutal-card bg-white dark:bg-brand-panelDark p-4 rounded-xl text-left flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full border-4 border-slate-300 dark:border-slate-700"></div>
+                                    <span class="font-bold">PayPal</span>
+                                </button>
+                                <button onclick="app.selectPaymentMethod('fpx')" id="payment-fpx" class="w-full brutal-card bg-white dark:bg-brand-panelDark p-4 rounded-xl text-left flex items-center gap-3">
+                                    <div class="w-6 h-6 rounded-full border-4 border-slate-300 dark:border-slate-700"></div>
+                                    <span class="font-bold">Malaysian Bank (FPX/DuitNow)</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Stripe Card Form -->
+                        <div id="stripe-form" class="brutal-card bg-white dark:bg-brand-panelDark p-6 rounded-xl">
+                            <div id="card-element" class="mb-4 p-4 border-2 border-slate-300 dark:border-slate-700 rounded"></div>
+                            <div id="card-errors" class="text-brand-secondary text-sm mb-4"></div>
+                            <button onclick="app.processPayment()" class="neubrutalism-btn w-full">
+                                COMPLETE PURCHASE
+                            </button>
+                        </div>
+
+                        <!-- PayPal Button Container -->
+                        <div id="paypal-form" class="hidden">
+                            <div id="paypal-button-container"></div>
+                        </div>
+
+                        <!-- FPX Form -->
+                        <div id="fpx-form" class="hidden brutal-card bg-white dark:bg-brand-panelDark p-6 rounded-xl">
+                            <p class="text-sm text-slate-600 dark:text-brand-mutedDark mb-4">
+                                You'll be redirected to your bank to complete the payment securely.
+                            </p>
+                            <button onclick="app.processFPX()" class="neubrutalism-btn w-full">
+                                PROCEED TO BANK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- FOOTER -->
+        <footer class="h-14 flex items-center justify-between px-6 border-t border-slate-200 dark:border-slate-800 bg-brand-light dark:bg-brand-dark">
+            <p class="text-xs text-brand-mutedLight dark:text-brand-mutedDark">
+                &copy; 2025 Axon Avenue PLT. All Rights Reserved.
+            </p>
+            <div class="flex items-center gap-4">
+                <p class="text-xs text-brand-mutedLight dark:text-brand-mutedDark hidden md:block">
+                    This site is for informational purposes only, not medical advice.
+                </p>
+                <p class="text-xs text-brand-mutedLight dark:text-brand-mutedDark">
+                    Powered by <span class="font-semibold text-slate-600 dark:text-slate-300">Google AI</span>
+                </p>
+            </div>
+        </footer>
+    
+        <!-- APP LOGIC -->
+        <script>
+                const app = {
+                    state: { lang: 'en', theme: 'dark', currentView: 'hub', activeModId: 2, activeTopicId: 1 },
+                    
+                    // MULTI-MODULE DATA STRUCTURE
+                    modules: {
+                        1: {
+                            title_en: "Biological Substrate", title_bm: "Substrat Biologi",
+                            topics: [
+                                {
+                                    id: 1, 
+                                    title_en: "Synaptic Hyper-Connectivity", title_bm: "Hiper-Konektiviti Sinaptik",
+                                    summary_en: "The autistic brain creates more connections and prunes fewer, resulting in high-bandwidth processing and intensity.",
+                                    summary_bm: "Otak autistik mencipta lebih banyak sambungan, mengakibatkan pemprosesan lebar jalur tinggi.",
+                                    mech_en: "Deficit in 'Synaptic Pruning' during development leaves the brain with a surplus of neural pathways. Like a computer with too many cables.",
+                                    mech_bm: "Kekurangan 'Pemangkasan Sinaptik' meninggalkan otak dengan lebihan laluan saraf.",
+                                    quote_en: "My brain doesn't have a spam filter; I read every email.",
+                                    quote_bm: "Otak saya tidak mempunyai penapis spam; saya membaca setiap e-mel.",
+                                    strategy_en: "Reduce input load. Your hardware runs hot; you need better cooling (silence/darkness).",
+                                    strategy_bm: "Kurangkan beban input. Perkakasan anda panas; anda perlukan penyejukan (senyap/gelap).",
+                                    stats: [95, 20, 30, 80, 100],
+                                    premium_title_en: "Bio-Hacking Protocol", premium_desc_en: "Unlock the Supplement & Nutrition Guide."
+                                },
+                                {
+                                    id: 2, 
+                                    title_en: "The GABA/Glutamate Imbalance", title_bm: "Ketidakseimbangan GABA/Glutamat",
+                                    summary_en: "A chemical imbalance between the brain's accelerator (Glutamate) and its brakes (GABA).",
+                                    summary_bm: "Ketidakseimbangan kimia antara pemecut otak (Glutamat) dan breknya (GABA).",
+                                    mech_en: "Reduced GABA transmission means the brain struggles to 'switch off' anxiety or racing thoughts once triggered.",
+                                    mech_bm: "Penghantaran GABA yang berkurangan bermakna otak sukar untuk 'memadamkan' kebimbangan.",
+                                    quote_en: "I am not worried about anything specific; I just feel like I am falling.",
+                                    quote_bm: "Saya tidak risau tentang perkara khusus; saya cuma rasa seperti sedang jatuh.",
+                                    strategy_en: "Magnesium Glycinate and deep pressure therapy to mechanically stimulate the parasympathetic system.",
+                                    strategy_bm: "Magnesium Glycinate dan terapi tekanan dalam.",
+                                    stats: [80, 50, 40, 90, 80],
+                                    premium_title_en: "Nervous System Reset", premium_desc_en: "Guided exercises to manually trigger GABA release."
+                                },
+                                {
+                                    id: 3, 
+                                    title_en: "The Gut-Brain Axis", title_bm: "Paksi Usus-Otak",
+                                    summary_en: "90% of serotonin is produced in the gut. Microbiome dysbiosis directly impacts autistic mood stability.",
+                                    summary_bm: "90% serotonin dihasilkan dalam usus. Disbiosis mikrobiom memberi kesan langsung kepada mood.",
+                                    mech_en: "Inflammation in the gut travels up the Vagus nerve, causing 'Brain Fog' and irritability.",
+                                    mech_bm: "Keradangan dalam usus bergerak ke atas saraf Vagus, menyebabkan 'Kabut Otak'.",
+                                    quote_en: "My stomach hurts, and now I can't speak.",
+                                    quote_bm: "Perut saya sakit, dan sekarang saya tidak boleh bercakap.",
+                                    strategy_en: "Low-FODMAP diet investigation and probiotics. Treat the stomach to heal the mind.",
+                                    strategy_bm: "Siasatan diet rendah FODMAP dan probiotik.",
+                                    stats: [40, 30, 20, 70, 100],
+                                    premium_title_en: "The Neuro-Nutrition Guide", premium_desc_en: "Dietary plans for reducing neuro-inflammation."
+                                },
+                                 {
+                                    id: 4, 
+                                    title_en: "Amygdala Hyper-Reactivity", title_bm: "Hiper-Reaktiviti Amigdala",
+                                    summary_en: "The brain's 'smoke detector' is calibrated too sensitively, triggering Fight/Flight over minor stimuli.",
+                                    summary_bm: "'Pengesan asap' otak terlalu sensitif, mencetuskan Lawan/Lari ke atas rangsangan kecil.",
+                                    mech_en: "Enlarged amygdala volume in childhood leads to a baseline state of hyper-vigilance.",
+                                    mech_bm: "Isipadu amigdala yang membesar membawa kepada keadaan kewaspadaan tinggi.",
+                                    quote_en: "A sudden knock on the door feels like a gunshot.",
+                                    quote_bm: "Ketukan tiba-tiba di pintu terasa seperti tembakan.",
+                                    strategy_en: "Vagus nerve stimulation (humming, cold water) to hack the safety signal.",
+                                    strategy_bm: "Stimulasi saraf Vagus (berdengung, air sejuk).",
+                                    stats: [90, 40, 60, 100, 70],
+                                    premium_title_en: "Safety Mapping", premium_desc_en: "Tools to recalibrate your threat response."
+                                }
+                            ]
+                        },
+                        2: {
+                            title_en: "Neuro-Cognitive Architecture", title_bm: "Seni Bina Neuro-Kognitif",
+                            topics: [
+                        {
+                            id: 1, title_en: "Sensory Gating Deficit", title_bm: "Defisit Penapisan Deria", summary_en: "Inability to filter background noise.", summary_bm: "Ketidakupayaan menapis bunyi latar.", mech_en: "P50 wave suppression failure. The brain cannot ignore 'redundant' stimuli, treating every sound like a new threat.", mech_bm: "Kegagalan penindasan gelombang P50. Otak tidak boleh mengabaikan rangsangan 'berlebihan'.", quote_en: "I hear electricity.", quote_bm: "Saya dengar elektrik.", strategy_en: "Proactive use of ANC headphones before stress begins.", strategy_bm: "Penggunaan proaktif fon kepala ANC.", stats: [90, 80, 40, 60, 20], premium_title_en: "Masterclass Video", premium_desc_en: "Visual explainer of sensory overload.",
+                            infographic_path: "/neuro/module/architecture/sensory-gating/sensory-gating.png",
+                            audio_path: "/neuro/module/architecture/sensory-gating/How_the_Brain_Filters_Out_Noise.m4a",
+                            video_path: "/neuro/module/architecture/sensory-gating/The_Brain_s_Spam_Filter.mp4"
+                        },
+                        {
+                            id: 2, title_en: "Bottom-Up Processing", title_bm: "Pemprosesan Bawah-Ke-Atas", summary_en: "Details first, concept later.", summary_bm: "Butiran dahulu, konsep kemudian.", mech_en: "Enhanced perceptual functioning (EPF). The brain processes raw data points individually before assembling the big picture.", mech_bm: "Fungsi persepsi dipertingkat (EPF). Otak memproses data mentah secara individu.", quote_en: "I see bricks, not walls.", quote_bm: "Saya nampak bata, bukan dinding.", strategy_en: "Request the 'Big Picture' explicitly at start of tasks.", strategy_bm: "Minta 'Gambaran Besar' secara jelas.", stats: [30, 95, 20, 40, 50], premium_title_en: "Masterclass Video", premium_desc_en: "Visual explainer of processing styles.",
+                            infographic_path: "/neuro/module/architecture/bottom-up-processing/bottom-up.png",
+                            audio_path: "/neuro/module/architecture/bottom-up-processing/Autistic_Bottom-Up_Processing_and_Sensory_Overload.m4a",
+                            video_path: "/neuro/module/architecture/bottom-up-processing/The_Bottom-Up_Brain.mp4"
+                        },
+                        {
+                            id: 3, title_en: "Interoceptive Disconnect", title_bm: "Putus Hubungan Interoseptif", summary_en: "Difficulty perceiving internal bodily signals (hunger, pain).", summary_bm: "Kesukaran mengamati isyarat badan dalaman.", mech_en: "Insula cortex dysfunction leads to under- or over-sensing internal states.", mech_bm: "Disfungsi korteks insula membawa kepada kurang atau lebih rasa.", quote_en: "I forgot to eat for 2 days.", quote_bm: "Saya lupa makan 2 hari.", strategy_en: "Use external timers for bio-needs, not 'feelings'.", strategy_bm: "Gunakan pemasa luaran untuk keperluan bio.", stats: [85, 50, 30, 80, 90], premium_title_en: "Body Mapping Tool", premium_desc_en: "Exercises to reconnect with physical cues.",
+                            infographic_path: "/neuro/module/architecture/interoceptive-disconnect/interoception.png",
+                            audio_path: "/neuro/module/architecture/interoceptive-disconnect/Interoception_Alexithymia_and_Body-Based_Therapy.m4a",
+                            video_path: "/neuro/module/architecture/interoceptive-disconnect/The_Hidden_Sense.mp4"
+                        },
+                        {
+                            id: 4, title_en: "Monotropism", title_bm: "Monotropisme", summary_en: "Attention tunnel strategy.", summary_bm: "Strategi terowong perhatian.", mech_en: "Resources are pulled into a tight 'attention tunnel' for deep processing. Switching tasks causes cognitive vertigo.", mech_bm: "Sumber ditarik ke dalam 'terowong perhatian' yang ketat.", quote_en: "Don't interrupt my tunnel.", quote_bm: "Jangan ganggu terowong saya.", strategy_en: "Use 'transition bridges' to exit tunnels slowly.", strategy_bm: "Gunakan 'jambatan peralihan'.", stats: [40, 100, 20, 60, 30], premium_title_en: "Flow State Guide", premium_desc_en: "How to harness monotropism for work.",
+                            infographic_path: "/neuro/module/architecture/monotropism/monotropism.png",
+                            audio_path: "/neuro/module/architecture/monotropism/Monotropism_Explains_Autistic_Attention_and_Burnout.m4a",
+                            video_path: "/neuro/module/architecture/monotropism/Understanding_Monotropism.mp4"
+                        },
+                        { 
+                            id: 5, 
+                            title_en: "Autistic Inertia", 
+                            title_bm: "Inersia Autistik", 
+                            summary_en: "Difficulty starting, stopping, or changing direction.", 
+                            summary_bm: "Kesukaran bermula, berhenti, atau menukar arah.", 
+                            mech_en: "Parkinsonian-like initiation deficits in the basal ganglia loops.", 
+                            mech_bm: "Defisit inisiasi seperti Parkinson dalam gelung basal ganglia.", 
+                            quote_en: "I'm stuck on the couch but I want to get up.", 
+                            quote_bm: "Saya tersangkut di sofa tetapi mahu bangun.", 
+                            strategy_en: "Body Doubling: use another person's presence to initiate.", 
+                            strategy_bm: "Body Doubling: guna kehadiran orang lain.", 
+                            stats: [20, 60, 30, 50, 95], 
+                            premium_title_en: "The Inertia Breaker", 
+                            premium_desc_en: "Audio prompts to help initiate movement.",
+                            infographic_path: "/neuro/module/architecture/autistic-inertia/inertia.png",
+                            audio_path: "/neuro/module/architecture/autistic-inertia/Autistic_Inertia_Needs_Sensory_Motor_Body_Doubling.m4a",
+                            video_path: "/neuro/module/architecture/autistic-inertia/A_Different_Operating_System.mp4"
+                        },
+                        { 
+                            id: 6, 
+                            title_en: "Zeigarnik Amplification", 
+                            title_bm: "Amplifikasi Zeigarnik", 
+                            summary_en: "Inability to let go of uncompleted tasks.", 
+                            summary_bm: "Ketidakupayaan melepaskan tugas tidak selesai.", 
+                            mech_en: "Unfinished tasks loop in working memory, consuming RAM and causing anxiety.", 
+                            mech_bm: "Tugas tidak selesai berulang dalam memori kerja.", 
+                            quote_en: "The open loop screams at me.", 
+                            quote_bm: "Gelung terbuka menjerit pada saya.", 
+                            strategy_en: "Write down the 'Next Action' to offload the loop.", 
+                            strategy_bm: "Tulis 'Tindakan Seterusnya' untuk memunggah gelung.", 
+                            stats: [30, 90, 20, 85, 40], 
+                            premium_title_en: "Task Closer Template", 
+                            premium_desc_en: "Worksheet to clear cognitive loops.",
+                            infographic_path: "/neuro/module/architecture/openloop-zeigarnik/zeigarnik-openloop.png",
+                            audio_path: "/neuro/module/architecture/openloop-zeigarnik/Autistic_Inertia_and_Why_Tasks_Drain_Energy.m4a",
+                            video_path: "/neuro/module/architecture/openloop-zeigarnik/Autistic Open Loops.mp4"
+                        },
+                        { 
+                            id: 7, 
+                            title_en: "Predictive Coding Error", 
+                            title_bm: "Ralat Pengekodan Ramalan", 
+                            summary_en: "Discrepancy between expectation and reality causes distress.", 
+                            summary_bm: "Percanggahan antara jangkaan dan realiti menyebabkan tekanan.", 
+                            mech_en: "High-precision prediction errors mean small changes feel like massive violations of reality.", 
+                            mech_bm: "Ralat ramalan ketepatan tinggi bermakna perubahan kecil terasa besar.", 
+                            quote_en: "Surprises are system errors.", 
+                            quote_bm: "Kejutan adalah ralat sistem.", 
+                            strategy_en: "Preview environments (Street View) to update priors.", 
+                            strategy_bm: "Pratonton persekitaran (Street View).", 
+                            stats: [70, 80, 40, 80, 30], 
+                            premium_title_en: "Anxiety Mapper", 
+                            premium_desc_en: "Tools to reduce predictive stress.",
+                            infographic_path: "/neuro/module/architecture/predictive-coding/aberrant-signal-processing.png",
+                            audio_path: "/neuro/module/architecture/predictive-coding/Brain_prediction_errors_unify_Autism_differences.m4a",
+                            video_path: "/neuro/module/architecture/predictive-coding/Predictive_Brain_&_Autism.mp4",
+                            pdf_path: "/neuro/module/architecture/predictive-coding/Autism_Predictive_Precision.pdf"
+                        },
+                        { 
+                            id: 8, 
+                            title_en: "Alexithymia", 
+                            title_bm: "Aleksitimia", 
+                            summary_en: "Difficulty identifying and naming emotions.", 
+                            summary_bm: "Kesukaran mengenal pasti dan menamakan emosi.", 
+                            mech_en: "Disconnected pathway between limbic system (feeling) and frontal lobe (labeling).", 
+                            mech_bm: "Laluan terputus antara sistem limbik dan lobus frontal.", 
+                            quote_en: "I am crying but I don't know why.", 
+                            quote_bm: "Saya menangis tapi tak tahu kenapa.", 
+                            strategy_en: "Use an Emotion Wheel to logically deduce feelings.", 
+                            strategy_bm: "Gunakan Roda Emosi.", 
+                            stats: [60, 40, 70, 95, 50], 
+                            premium_title_en: "The Logic of Emotion", 
+                            premium_desc_en: "Guide to decoding physical feelings.",
+                            infographic_path: "/neuro/module/architecture/alexithymia/alexithymia.png",
+                            audio_path: "/neuro/module/architecture/alexithymia/Alexithymia_Explains_Autism_Emotional_Challenges.m4a",
+                            video_path: "/neuro/module/architecture/alexithymia/Autism_&_Empathy__The_Real_Story.mp4",
+                            pdf_path: "/neuro/module/architecture/alexithymia/Untangling_the_Wires.pdf"
+                        },
+                        { 
+                            id: 9, 
+                            title_en: "The Double Empathy Problem", 
+                            title_bm: "Masalah Empati Ganda", 
+                            summary_en: "Mutual misunderstanding due to different lived experiences.", 
+                            summary_bm: "Salah faham bersama akibat pengalaman hidup berbeza.", 
+                            mech_en: "It refutes the idea that autistics lack empathy; rather, communication styles clash.", 
+                            mech_bm: "Ia menolak idea autistik kurang empati; sebaliknya gaya komunikasi bertembung.", 
+                            quote_en: "We speak different languages.", 
+                            quote_bm: "Kita cakap bahasa berbeza.", 
+                            strategy_en: "Frame issues as 'cultural translation' errors.", 
+                            strategy_bm: "Anggap isu sebagai ralat 'terjemahan budaya'.", 
+                            stats: [20, 50, 100, 60, 20], 
+                            premium_title_en: "Communication Scripts", 
+                            premium_desc_en: "Templates for bridging the gap.",
+                            infographic_path: "/neuro/module/architecture/double-empathy/double-empathy.png",
+                            audio_path: "/neuro/module/architecture/double-empathy/The_Double_Empathy_Communication_Breakdown.m4a",
+                            video_path: "/neuro/module/architecture/double-empathy/The_Double_Empathy_Problem.mp4"
+                        },
+                        { 
+                            id: 10, 
+                            title_en: "Context Blindness", 
+                            title_bm: "Kebutaan Konteks", 
+                            summary_en: "Inability to intuitively grasp social hierarchies.", 
+                            summary_bm: "Ketidakupayaan memahami hierarki sosial secara intuitif.", 
+                            mech_en: "The brain processes rules absolutely, ignoring context-dependent exceptions.", 
+                            mech_bm: "Otak memproses peraturan secara mutlak, mengabaikan pengecualian konteks.", 
+                            quote_en: "Why is the rule different today?", 
+                            quote_bm: "Kenapa peraturan berbeza hari ini?", 
+                            strategy_en: "Explicitly ask for 'Rules of Engagement'.", 
+                            strategy_bm: "Tanya 'Peraturan Penglibatan' secara jelas.", 
+                            stats: [30, 70, 90, 50, 20], 
+                            premium_title_en: "Social Decoder", 
+                            premium_desc_en: "Guide to reading room dynamics.",
+                            infographic_path: "/neuro/module/architecture/context-blindness/context-blindness.png",
+                            audio_path: "/neuro/module/architecture/context-blindness/Autism_Context_Blindness_and_Detail_Focus.m4a",
+                            video_path: "/neuro/module/architecture/context-blindness/Understanding_Context_Blindness.mp4"
+                        },
+                        { 
+                            id: 11, 
+                            title_en: "Pathological Demand Avoidance", 
+                            title_bm: "Pengelakan Tuntutan Patologi", 
+                            summary_en: "Anxiety-driven resistance to demands to protect autonomy.", 
+                            summary_bm: "Tentangan terhadap tuntutan untuk melindungi autonomi.", 
+                            mech_en: "Demands trigger a threat response (fight/flight) because loss of control feels unsafe.", 
+                            mech_bm: "Tuntutan mencetuskan respons ancaman.", 
+                            quote_en: "If you ask, I can't do it.", 
+                            quote_bm: "Kalau awak suruh, saya tak boleh buat.", 
+                            strategy_en: "Use declarative language ('It's dinner time' vs 'Eat dinner').", 
+                            strategy_bm: "Guna bahasa deklaratif.", 
+                            stats: [50, 60, 70, 90, 40], 
+                            premium_title_en: "The PDA Toolkit", 
+                            premium_desc_en: "Low-demand parenting/living strategies.",
+                            infographic_path: "/neuro/module/architecture/pathological-demand-avoidance/pda.png",
+                            audio_path: "/neuro/module/architecture/pathological-demand-avoidance/Reducing_PDA_Demands_With_Indirect_Communication.m4a",
+                            video_path: "/neuro/module/architecture/pathological-demand-avoidance/The_Drive_for_Autonomy.mp4"
+                        },
+                        { 
+                            id: 12, 
+                            title_en: "Masking", 
+                            title_bm: "Penyamaran", 
+                            summary_en: "Suppressing traits to fit in, leading to burnout.", 
+                            summary_bm: "Menekan ciri untuk menyesuaikan diri, membawa kepada kelesuan.", 
+                            mech_en: "Running a 'simulation' of a person on top of your actual personality consumes massive CPU.", 
+                            mech_bm: "Menjalankan 'simulasi' orang lain menggunakan CPU tinggi.", 
+                            quote_en: "I don't know who I am anymore.", 
+                            quote_bm: "Saya tak tahu siapa saya lagi.", 
+                            strategy_en: "Schedule safe 'unmasking' time alone.", 
+                            strategy_bm: "Jadualkan masa 'buka topeng' selamat.", 
+                            stats: [60, 50, 90, 80, 70], 
+                            premium_title_en: "Recovery Guide", 
+                            premium_desc_en: "Steps to recover from autistic burnout.",
+                            infographic_path: "/neuro/module/architecture/masking/unmasking.png",
+                            audio_path: "/neuro/module/architecture/masking/Creating_a_safe_unmasked_sanctuary_for_partners.m4a",
+                            video_path: "/neuro/module/architecture/masking/Unmasking_Autism.mp4",
+                            pdf_path: "/neuro/module/architecture/masking/The_Autistic_Iceberg_Unmasked.pdf"
+                        },
+                        { 
+                            id: 13, 
+                            title_en: "Allostatic Overload", 
+                            title_bm: "Beban Lampau Alostatik", 
+                            summary_en: "Cumulative wear and tear on the body from stress.", 
+                            summary_bm: "Kelesuan kumulatif pada badan akibat tekanan.", 
+                            mech_en: "Chronic activation of stress systems leads to physical illness and skill regression.", 
+                            mech_bm: "Pengaktifan kronik sistem tekanan membawa penyakit fizikal.", 
+                            quote_en: "My system has shut down.", 
+                            quote_bm: "Sistem saya telah terpadam.", 
+                            strategy_en: "Radical Rest (Sensory Deprivation).", 
+                            strategy_bm: "Rehat Radikal (Penafian Deria).", 
+                            stats: [95, 80, 50, 95, 100], 
+                            premium_title_en: "Burnout Rescue Plan", 
+                            premium_desc_en: "Emergency protocols for overload.",
+                            infographic_path: "/neuro/module/architecture/allostatic-overload/allostatic-burnout.png",
+                            audio_path: "/neuro/module/architecture/allostatic-overload/Autistic_Burnout_is_Biological_Wear_and_Tear.m4a",
+                            video_path: "/neuro/module/architecture/allostatic-overload/The_Unseen_Weight.mp4",
+                            pdf_path: "/neuro/module/architecture/allostatic-overload/Autistic_Burnout_Physiology.pdf"
+                        }
+                    ]
+                        },
+                        3: {
+                            title_en: "The Adaptive Interface", title_bm: "Antaramuka Adaptif",
+                            topics: [
+                                {
+                                    id: 1, 
+                                    title_en: "Spoon Theory 2.0", title_bm: "Teori Sudu 2.0",
+                                    summary_en: "Advanced energy accounting. Budgeting cognitive load to prevent burnout before it starts.",
+                                    summary_bm: "Perakaunan tenaga lanjutan. Mengurus beban kognitif untuk mengelakkan kelesuan.",
+                                    mech_en: "Autistic brains consume more glucose for basic tasks. You have a smaller battery with a faster drain.",
+                                    mech_bm: "Otak autistik menggunakan lebih banyak glukosa. Anda mempunyai bateri yang lebih kecil.",
+                                    quote_en: "I can do the dishes OR I can talk to you. I cannot do both.",
+                                    quote_bm: "Saya boleh basuh pinggan ATAU bercakap dengan awak. Tak boleh kedua-duanya.",
+                                    strategy_en: "Audit your 'Energy Vampires'. Cut unnecessary sensory inputs to save energy for social tasks.",
+                                    strategy_bm: "Audit 'Pontianak Tenaga' anda. Kurangkan input deria.",
+                                    stats: [80, 90, 60, 70, 80],
+                                    premium_title_en: "Energy Audit Template", premium_desc_en: "Downloadable planner for weekly energy budgeting."
+                                },
+                                {
+                                    id: 2, 
+                                    title_en: "Sensory Architecture", title_bm: "Seni Bina Deria",
+                                    summary_en: "Designing your home and workspace to be a 'recovery tank' rather than a drain.",
+                                    summary_bm: "Mereka bentuk rumah dan ruang kerja anda sebagai 'tangki pemulihan'.",
+                                    mech_en: "Environmental stressors accumulate (Allostatic Load). A safe environment allows the nervous system to baseline.",
+                                    mech_bm: "Tekanan persekitaran terkumpul. Persekitaran selamat membenarkan sistem saraf kembali asal.",
+                                    quote_en: "My home is not just a house; it is a sensory deprivation tank.",
+                                    quote_bm: "Rumah saya bukan sekadar rumah; ia adalah tangki penafian deria.",
+                                    strategy_en: "Use 2700K (Warm) lighting. Install acoustic panels. Create a 'No-Talk' zone.",
+                                    strategy_bm: "Gunakan pencahayaan 2700K. Pasang panel akustik.",
+                                    stats: [100, 30, 20, 50, 40],
+                                    premium_title_en: "Home Design Checklist", premium_desc_en: "Room-by-room guide to sensory-proofing."
+                                },
+                                {
+                                    id: 3, 
+                                    title_en: "Professional Advocacy", title_bm: "Advokasi Profesional",
+                                    summary_en: "How to disclose your autism at work and request accommodations without stigma.",
+                                    summary_bm: "Cara mendedahkan autisme di tempat kerja dan meminta kemudahan.",
+                                    mech_en: "Self-advocacy reduces the need for masking, which is the primary cause of workplace burnout.",
+                                    mech_bm: "Advokasi diri mengurangkan keperluan penyamaran.",
+                                    quote_en: "I don't need pity; I need a quiet desk and written instructions.",
+                                    quote_bm: "Saya tak perlukan belas kasihan; saya perlukan meja senyap dan arahan bertulis.",
+                                    strategy_en: "Focus on 'Productivity' not 'Disability'. 'I work better with headphones' vs 'I have a problem'.",
+                                    strategy_bm: "Fokus pada 'Produktiviti' bukan 'Kecacatan'.",
+                                    stats: [20, 80, 100, 60, 30],
+                                    premium_title_en: "HR Request Scripts", premium_desc_en: "Templates for requesting WFH and accommodations."
+                                },
+                                 {
+                                    id: 4, 
+                                    title_en: "Legal Rights (Akta OKU)", title_bm: "Hak Perundangan (Akta OKU)",
+                                    summary_en: "Understanding your rights under the Malaysian Persons with Disabilities Act 2008 and global equivalents.",
+                                    summary_bm: "Memahami hak anda di bawah Akta Orang Kurang Upaya 2008 Malaysia.",
+                                    mech_en: "Knowledge of the law shifts the dynamic from 'asking for a favor' to 'exercising a right'.",
+                                    mech_bm: "Pengetahuan undang-undang mengubah dinamik daripada 'meminta pertolongan' kepada 'menggunakan hak'.",
+                                    quote_en: "Access is not a perk; it is the law.",
+                                    quote_bm: "Akses bukan keistimewaan; ia adalah undang-undang.",
+                                    strategy_en: "Register for your OKU card to access tax reliefs and education quotas in Malaysia.",
+                                    strategy_bm: "Daftar kad OKU untuk pelepasan cukai dan kuota pendidikan.",
+                                    stats: [10, 70, 90, 40, 50],
+                                    premium_title_en: "The Legal Shield PDF", premium_desc_en: "Summarized rights card for wallet or phone."
+                                }
+                            ]
+                        }
+                    },
+        
+                    dictionary: {
+                        en: {
+                            nav_subtitle: "Neuroscience Research", nav_cta: "FULL ACCESS", hub_pretitle: "Evidence-Based", hub_title: "Understanding Autism from the Inside Out", hub_desc: "A neuroscience-grounded framework for understanding autistic neurology. Research-backed insights into biology, cognition, and adaptation.",
+                            mod1_label: "Module 01", mod1_title: "The Biological Substrate", mod1_desc: "The hardware of the system.",
+                            mod2_label: "Module 02", mod2_title: "Neuro-Cognitive Architecture", mod2_desc: "The 13 core phenomenological traits.",
+                            mod3_label: "Module 03", mod3_title: "The Adaptive Interface", mod3_desc: "Legal frameworks and strategy.",
+                            btn_enter: "Enter Module", back_hub: "Back to Hub",
+                            header_mechanism: "Mechanism", header_lived: "Lived Insight", sidebar_stats: "Impact Analysis", sidebar_strategy: "Strategy", btn_download: "Download PDF", btn_upgrade: "Get Full Access"
+                        },
+                        bm: {
+                            nav_subtitle: "Penyelidikan Neurosains", nav_cta: "AKSES PENUH", hub_pretitle: "Berasaskan Bukti", hub_title: "Memahami Autisme dari Dalam Keluar", hub_desc: "Rangka kerja berasaskan neurosains untuk memahami neurologi autistik. Wawasan berlandaskan penyelidikan tentang biologi, kognisi, dan adaptasi.",
+                            mod1_label: "Modul 01", mod1_title: "Substrat Biologi", mod1_desc: "Perkakasan sistem.",
+                            mod2_label: "Modul 02", mod2_title: "Seni Bina Neuro-Kognitif", mod2_desc: "13 ciri fenomenologi teras.",
+                            mod3_label: "Modul 03", mod3_title: "Antaramuka Adaptif", mod3_desc: "Rangka kerja perundangan.",
+                            btn_enter: "Masuk Modul", back_hub: "Kembali ke Hab",
+                            header_mechanism: "Mekanisme", header_lived: "Wawasan Hidup", sidebar_stats: "Analisis Impak", sidebar_strategy: "Strategi", btn_download: "Muat Turun PDF", btn_upgrade: "Dapatkan Akses"
+                        }
+                    },
+        
+                    init: function() {
+                        this.renderText();
+                    },
+        
+                    loadModule: function(id) {
+                        this.state.activeModId = id;
+                        this.state.activeTopicId = 1;
+                        this.state.currentView = 'detail';
+                        
+                        document.getElementById('view-hub').classList.add('hidden');
+                        document.getElementById('view-detail').classList.remove('hidden');
+                        
+                        // Update Sidebar Title
+                        const mod = this.modules[id];
+                        const title = this.state.lang === 'en' ? mod.title_en : mod.title_bm;
+                        document.getElementById('sidebar-module-title').innerText = title;
+                        document.getElementById('mobile-mod-id').innerText = `MOD 0${id}`;
+        
+                        this.generateSidebar();
+                        this.loadTopic(1);
+                    },
+        
+                    goHome: function() {
+                        this.state.currentView = 'hub';
+                        document.getElementById('view-detail').classList.add('hidden');
+                        document.getElementById('view-hub').classList.remove('hidden');
+                    },
+        
+                    generateSidebar: function() {
+                        const container = document.getElementById('topic-list');
+                        container.innerHTML = '';
+                        const mod = this.modules[this.state.activeModId];
+                        
+                        mod.topics.forEach(t => {
+                            const title = this.state.lang === 'en' ? t.title_en : t.title_bm;
+                            const btn = document.createElement('button');
+                            const isActive = t.id === this.state.activeTopicId;
+                            const darkClass = isActive ? 'bg-slate-800/50 border-l-brand-gold' : 'hover:bg-slate-800 border-l-transparent';
+                            const lightClass = isActive ? 'bg-slate-100 border-l-brand-gold' : 'hover:bg-slate-50 border-l-transparent';
+                            
+                            btn.className = `w-full text-left p-4 border-b border-slate-200 dark:border-slate-800 transition flex items-center justify-between group border-l-2 dark:${darkClass} ${lightClass}`;
+                            btn.innerHTML = `<span class="text-sm ${isActive ? 'font-bold dark:text-white' : 'text-slate-500'} truncate pr-2">${title}</span><span class="text-[10px] font-mono ${isActive ? 'text-brand-gold' : 'text-slate-400'}">0${t.id}</span>`;
+                            btn.onclick = () => { this.state.activeTopicId = t.id; this.generateSidebar(); this.loadTopic(t.id); };
+                            container.appendChild(btn);
+                        });
+                    },
+        
+                    loadTopic: function(id) {
+                        const mod = this.modules[this.state.activeModId];
+                        const t = mod.topics.find(x => x.id === id);
+                        const l = this.state.lang;
+
+                        document.getElementById('topic-id').innerText = id < 10 ? `0${id}` : id;
+                        document.getElementById('topic-title').innerText = l === 'en' ? t.title_en : t.title_bm;
+                        document.getElementById('topic-summary').innerText = l === 'en' ? t.summary_en : t.summary_bm;
+                        document.getElementById('text-mechanism').innerText = l === 'en' ? t.mech_en : t.mech_bm;
+                        document.getElementById('text-quote').innerText = `"${l === 'en' ? t.quote_en : t.quote_bm}"`;
+                        document.getElementById('text-strategy').innerText = l === 'en' ? t.strategy_en : t.strategy_bm;
+
+                        // === 1. INFOGRAPHIC TAB ===
+                        const infographicContent = document.getElementById('content-infographic');
+                        if (t.infographic_path) {
+                            infographicContent.innerHTML = `
+                                <div class="brutal-card bg-white dark:bg-brand-panelDark p-8 min-h-[500px] flex flex-col items-center justify-center text-center">
+                                    <h2 class="text-slate-900 dark:text-white text-3xl font-serif font-bold mb-6">${l === 'en' ? t.title_en : t.title_bm}</h2>
+                                    <img src="${t.infographic_path}" alt="Infographic for ${l === 'en' ? t.title_en : t.title_bm}" class="max-w-full h-auto rounded-lg mb-8 border-4 border-black dark:border-brand-accentDark">
+                                    <a href="${t.infographic_path}" download class="neubrutalism-btn">
+                                        Download PNG ↓
+                                    </a>
+                                </div>`;
+                        } else {
+                            infographicContent.innerHTML = `
+                                <div class="brutal-card bg-white dark:bg-brand-panelDark p-8 min-h-[500px] flex flex-col items-center justify-center text-center">
+                                    <h2 class="text-slate-900 dark:text-white text-3xl font-serif font-bold mb-4">${l === 'en' ? t.title_en : t.title_bm}</h2>
+                                    <p class="text-slate-500 dark:text-brand-mutedDark italic mb-8">Infographic coming soon</p>
+                                </div>`;
+                        }
+
+                        // === 2. AUDIO TAB ===
+                        const audioElement = document.getElementById('audio-element');
+                        if (t.audio_path) {
+                            // Pause if currently playing
+                            audioElement.pause();
+                            audioElement.currentTime = 0;
+
+                            // Set new source
+                            audioElement.src = t.audio_path;
+                            audioElement.load();
+
+                            // Reset play icon
+                            document.getElementById('play-icon').innerText = '▶';
+
+                            // Reset progress
+                            document.getElementById('audio-progress').style.width = '0%';
+                            document.getElementById('audio-current-time').innerText = '0:00';
+
+                            console.log('Audio loaded:', t.audio_path);
+                        } else {
+                            audioElement.src = '';
+                            audioElement.load();
+                        }
+
+                        // === 3. VIDEO TAB ===
+                        const videoElement = document.getElementById('video-element');
+                        if (t.video_path) {
+                            videoElement.src = t.video_path;
+                            videoElement.load();
+                        } else {
+                            videoElement.src = '';
+                            videoElement.load();
+                        }
+
+                        // === 4. TOOLKIT TAB (Update lock text) ===
+                        if (t.premium_title_en) {
+                            document.getElementById('lock-title').innerText = l === 'en' ? t.premium_title_en : "Kandungan Premium";
+                            document.getElementById('lock-desc').innerText = l === 'en' ? t.premium_desc_en : "Akses kandungan eksklusif.";
+                        }
+
+                        document.getElementById('main-scroll').scrollTop = 0;
+                        this.updateChart(t.stats);
+                        this.setTab('read');
+                    },
+        
+                    setTab: function(t) {
+                        document.querySelectorAll('.content-tab').forEach(el => el.classList.add('hidden'));
+                        document.getElementById(`content-${t}`).classList.remove('hidden');
+
+                        // Update tab button styles
+                        document.querySelectorAll('.tab-btn').forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.classList.remove('text-brand-gold', 'dark:text-brand-accentDark');
+                            btn.classList.add('text-slate-500', 'dark:text-brand-mutedDark');
+                        });
+
+                        const activeBtn = document.getElementById(`tab-${t}`);
+                        if (activeBtn) {
+                            activeBtn.classList.add('active');
+                            activeBtn.classList.remove('text-slate-500', 'dark:text-brand-mutedDark');
+                            activeBtn.classList.add('text-brand-gold', 'dark:text-brand-accentDark');
+                        }
+                    },
+        
+                    toggleTheme: function() {
+                        const html = document.querySelector('html');
+                        html.classList.toggle('dark');
+                        this.state.theme = html.classList.contains('dark') ? 'dark' : 'light';
+                        const t = this.modules[this.state.activeModId].topics.find(x => x.id === this.state.activeTopicId);
+                        this.updateChart(t.stats);
+                    },
+                    
+                    toggleLang: function() {
+                        this.state.lang = this.state.lang === 'en' ? 'bm' : 'en';
+                        // Toggle UI Text
+                        const ind = document.getElementById('lang-indicator');
+                        const alt = document.getElementById('lang-alt');
+                        ind.innerText = this.state.lang === 'en' ? 'EN' : 'BM';
+                        alt.innerText = this.state.lang === 'en' ? 'BM' : 'EN';
+                        this.renderText();
+                        // Only refresh content if in detail view
+                        if(this.state.currentView === 'detail') this.loadTopic(this.state.activeTopicId);
+                        // Don't call loadModule when in hub view - it would switch views!
+                    },
+        
+                    renderText: function() {
+                        const dict = this.dictionary[this.state.lang];
+                        document.querySelectorAll('[data-i18n]').forEach(el => {
+                            const key = el.getAttribute('data-i18n');
+                            if (dict[key]) el.innerText = dict[key];
+                        });
+                    },
+        
+                    chartInstance: null,
+                    updateChart: function(data) {
+                        const ctx = document.getElementById('impactChart').getContext('2d');
+                        if (this.chartInstance) this.chartInstance.destroy();
+                        const isDark = this.state.theme === 'dark';
+                        const gridColor = isDark ? '#334155' : '#E2E8F0';
+                        
+                        this.chartInstance = new Chart(ctx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['Sensory', 'Cognitive', 'Social', 'Emotional', 'Physical'],
+                                datasets: [{ label: 'Intensity', data: data, backgroundColor: 'rgba(197, 160, 89, 0.2)', borderColor: '#C5A059', pointBackgroundColor: isDark ? '#0F172A' : '#fff' }]
+                            },
+                            options: { responsive: true, maintainAspectRatio: false, scales: { r: { angleLines: { color: gridColor }, grid: { color: gridColor }, pointLabels: { display: true, font: {size: 10} }, ticks: { display: false, max: 100 } } }, plugins: { legend: { display: false } } }
+                        });
+                    },
+
+                    // === CONVERSION MODAL FUNCTIONS ===
+                    showConversionModal: function(moduleId) {
+                        document.getElementById('conversion-modal').classList.remove('hidden');
+                        if (moduleId === 1) {
+                            document.getElementById('modal-title').innerText = 'Unlock The Biological Substrate';
+                        } else if (moduleId === 3) {
+                            document.getElementById('modal-title').innerText = 'Unlock The Adaptive Interface';
+                        }
+                        this.startCountdownTimer();
+                        this.updateSocialProof();
+                    },
+
+                    closeConversionModal: function() {
+                        document.getElementById('conversion-modal').classList.add('hidden');
+                    },
+
+                    // === NAVIGATION FUNCTIONS ===
+                    goToPricing: function() {
+                        document.getElementById('view-hub').classList.add('hidden');
+                        document.getElementById('view-detail').classList.add('hidden');
+                        document.getElementById('conversion-modal').classList.add('hidden');
+                        document.getElementById('view-pricing').classList.remove('hidden');
+                        document.getElementById('view-checkout').classList.add('hidden');
+                        this.state.currentView = 'pricing';
+                    },
+
+                    goToCheckout: function(plan) {
+                        const plans = {
+                            monthly: { name: 'Monthly Plan', price: 'MYR 49', billing: '/month', subtotal: 'MYR 49', savings: 'MYR 0' },
+                            annual: { name: 'Annual Plan', price: 'MYR 499', billing: '/year', subtotal: 'MYR 499', savings: '-MYR 89' },
+                            lifetime: { name: 'Lifetime Access', price: 'MYR 999', billing: 'one-time', subtotal: 'MYR 999', savings: 'MYR 0' }
+                        };
+
+                        const selectedPlan = plans[plan];
+                        document.getElementById('checkout-plan-name').innerText = selectedPlan.name;
+                        document.getElementById('checkout-price').innerText = selectedPlan.price;
+                        document.getElementById('checkout-billing').innerText = selectedPlan.billing;
+                        document.getElementById('checkout-subtotal').innerText = selectedPlan.subtotal;
+                        document.getElementById('checkout-savings').innerText = selectedPlan.savings;
+
+                        document.getElementById('view-pricing').classList.add('hidden');
+                        document.getElementById('view-checkout').classList.remove('hidden');
+                        this.state.currentView = 'checkout';
+                        this.state.selectedPlan = plan;
+                    },
+
+                    // === AUDIO PLAYER FUNCTIONS ===
+                    toggleAudio: function() {
+                        const audio = document.getElementById('audio-element');
+                        const playIcon = document.getElementById('play-icon');
+
+                        if (audio.paused) {
+                            const playPromise = audio.play();
+
+                            if (playPromise !== undefined) {
+                                playPromise
+                                    .then(() => {
+                                        playIcon.innerText = '⏸';
+                                    })
+                                    .catch(error => {
+                                        console.error('Audio playback failed:', error);
+                                        alert('⚠️ Audio playback error!\n\nPossible causes:\n1. Audio file not found at: ' + audio.src + '\n2. File format not supported (.m4a should work)\n3. File path is incorrect\n\nCheck the browser console for details.');
+                                    });
+                            }
+                        } else {
+                            audio.pause();
+                            playIcon.innerText = '▶';
+                        }
+                    },
+
+                    setAudioSpeed: function(speed) {
+                        const audio = document.getElementById('audio-element');
+                        audio.playbackRate = speed;
+
+                        // Update button styles
+                        document.querySelectorAll('#content-audio button[onclick*="setAudioSpeed"]').forEach(btn => {
+                            btn.classList.remove('bg-brand-gold');
+                            btn.classList.add('hover:bg-brand-gold');
+                        });
+                        event.target.classList.add('bg-brand-gold');
+                        event.target.classList.remove('hover:bg-brand-gold');
+                    },
+
+                    updateAudioProgress: function() {
+                        const audio = document.getElementById('audio-element');
+                        if (!audio || isNaN(audio.duration)) return;
+
+                        const progress = (audio.currentTime / audio.duration) * 100;
+                        document.getElementById('audio-progress').style.width = progress + '%';
+                        document.getElementById('audio-current-time').innerText = this.formatTime(audio.currentTime);
+                        document.getElementById('audio-total-time').innerText = this.formatTime(audio.duration);
+                    },
+
+                    // === VIDEO PLAYER FUNCTIONS ===
+                    setVideoSpeed: function(speed) {
+                        const video = document.getElementById('video-element');
+                        video.playbackRate = speed;
+
+                        // Update button styles
+                        document.querySelectorAll('#content-video button[onclick*="setVideoSpeed"]').forEach(btn => {
+                            btn.classList.remove('bg-brand-gold');
+                            btn.classList.add('hover:bg-brand-gold');
+                        });
+                        event.target.classList.add('bg-brand-gold');
+                        event.target.classList.remove('hover:bg-brand-gold');
+                    },
+
+                    // === PAYMENT FUNCTIONS ===
+                    selectPaymentMethod: function(method) {
+                        // Reset all payment buttons
+                        ['stripe', 'paypal', 'fpx'].forEach(m => {
+                            const btn = document.getElementById(`payment-${m}`);
+                            const radio = btn.querySelector('div');
+                            btn.classList.remove('border-4', 'border-brand-gold');
+                            btn.classList.remove('dark:border-brand-accentDark');
+                            radio.classList.remove('bg-brand-gold', 'dark:bg-brand-accentDark');
+                            radio.classList.remove('border-brand-gold', 'dark:border-brand-accentDark');
+                            radio.classList.add('border-slate-300', 'dark:border-slate-700');
+                        });
+
+                        // Activate selected method
+                        const selectedBtn = document.getElementById(`payment-${method}`);
+                        const selectedRadio = selectedBtn.querySelector('div');
+                        selectedBtn.classList.add('border-4', 'border-brand-gold', 'dark:border-brand-accentDark');
+                        selectedRadio.classList.remove('border-slate-300', 'dark:border-slate-700');
+                        selectedRadio.classList.add('bg-brand-gold', 'dark:bg-brand-accentDark', 'border-brand-gold', 'dark:border-brand-accentDark');
+
+                        // Show/hide forms
+                        document.getElementById('stripe-form').classList.toggle('hidden', method !== 'stripe');
+                        document.getElementById('paypal-form').classList.toggle('hidden', method !== 'paypal');
+                        document.getElementById('fpx-form').classList.toggle('hidden', method !== 'fpx');
+
+                        this.state.paymentMethod = method;
+                    },
+
+                    processPayment: function() {
+                        // Demo payment success
+                        if (typeof confetti !== 'undefined') {
+                            confetti({
+                                particleCount: 100,
+                                spread: 70,
+                                origin: { y: 0.6 },
+                                colors: ['#FFC107', '#FF6B35', '#00E676']
+                            });
+                        }
+                        alert('🎉 Payment successful! (Demo mode)\n\nIn production, this would:\n1. Process payment via Stripe\n2. Create user account\n3. Grant access to locked modules\n4. Send confirmation email');
+                        this.goHome();
+                    },
+
+                    processFPX: function() {
+                        alert('📱 FPX Payment Demo\n\nIn production, this would redirect to your bank portal (via Billplz/Senangpay integration)');
+                    },
+
+                    // === COUNTDOWN TIMER ===
+                    startCountdownTimer: function() {
+                        const timer = document.getElementById('countdown-timer');
+                        if (!timer) return;
+
+                        // Set timer to 4 hours from now
+                        const endTime = new Date().getTime() + (4 * 60 * 60 * 1000);
+
+                        const interval = setInterval(() => {
+                            const now = new Date().getTime();
+                            const distance = endTime - now;
+
+                            if (distance < 0) {
+                                clearInterval(interval);
+                                timer.innerText = "EXPIRED";
+                                return;
+                            }
+
+                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            timer.innerText = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                        }, 1000);
+                    },
+
+                    // === SOCIAL PROOF ===
+                    updateSocialProof: function() {
+                        const counter = document.getElementById('social-proof-count');
+                        if (!counter) return;
+
+                        const randomCount = Math.floor(Math.random() * (120 - 75 + 1)) + 75;
+                        counter.innerText = randomCount;
+                    },
+
+                    // === READING PROGRESS BAR ===
+                    updateReadingProgress: function() {
+                        const scrollElement = document.getElementById('main-scroll');
+                        if (!scrollElement) return;
+
+                        const scrollTop = scrollElement.scrollTop;
+                        const scrollHeight = scrollElement.scrollHeight - scrollElement.clientHeight;
+                        const progress = (scrollTop / scrollHeight) * 100;
+                        document.getElementById('reading-progress').style.width = progress + '%';
+                    },
+
+                    // === UTILITY FUNCTIONS ===
+                    formatTime: function(seconds) {
+                        if (isNaN(seconds)) return '0:00';
+                        const mins = Math.floor(seconds / 60);
+                        const secs = Math.floor(seconds % 60);
+                        return `${mins}:${String(secs).padStart(2, '0')}`;
+                    }
+                };
+
+                // === INITIALIZATION ===
+                window.onload = () => {
+                    app.init();
+
+                    // Initialize AOS animations
+                    if (typeof AOS !== 'undefined') {
+                        AOS.init({
+                            duration: 600,
+                            once: true,
+                            easing: 'ease-out',
+                            offset: 20,  // Trigger animations very early
+                            disable: window.innerWidth < 768  // Disable on mobile to prevent rendering issues
+                        });
+                    }
+
+                    // Audio player event listeners
+                    const audio = document.getElementById('audio-element');
+                    if (audio) {
+                        audio.addEventListener('timeupdate', () => app.updateAudioProgress());
+                        audio.addEventListener('loadedmetadata', () => app.updateAudioProgress());
+                    }
+
+                    // Reading progress
+                    const mainScroll = document.getElementById('main-scroll');
+                    if (mainScroll) {
+                        mainScroll.addEventListener('scroll', () => app.updateReadingProgress());
+                    }
+
+                    // Exit-intent detection (desktop only)
+                    let exitIntentTriggered = false;
+                    document.addEventListener('mouseleave', (e) => {
+                        if (e.clientY < 0 && app.state.currentView === 'hub' && !exitIntentTriggered) {
+                            app.showConversionModal(1);
+                            exitIntentTriggered = true;
+                        }
+                    });
+
+                    // Keyboard shortcuts for audio player
+                    document.addEventListener('keydown', (e) => {
+                        const audio = document.getElementById('audio-element');
+                        if (!audio || document.activeElement.tagName === 'INPUT') return;
+
+                        const currentTab = app.state.currentView === 'detail' && !document.getElementById('content-audio').classList.contains('hidden');
+                        if (!currentTab) return;
+
+                        if (e.code === 'Space') {
+                            e.preventDefault();
+                            app.toggleAudio();
+                        } else if (e.code === 'ArrowRight') {
+                            audio.currentTime += 5;
+                        } else if (e.code === 'ArrowLeft') {
+                            audio.currentTime -= 5;
+                        }
+                    });
+
+                    console.log('🎉 Autyst - Award-Winning Conversion Funnel Loaded!');
+                };
+            </script></body>
+</html>

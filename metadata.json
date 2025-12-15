@@ -1,0 +1,5 @@
+{
+  "name": "Interactive Solar System Portfolio",
+  "description": "An interactive portfolio visualized as a solar system. Each planet represents a project, with detailed astronomical data and dynamic animations. Explore projects by clicking on planets and discover their real-world astronomical counterparts.",
+  "requestFramePermissions": []
+}
