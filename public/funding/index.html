@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Private Funding Brief | Raul Lee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090a;
+      --card: #0f1012;
+      --card-hover: #141518;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --text: #f4f4f5;
+      --text-2: #a1a1aa;
+      --text-3: #52525b;
+      --blue: #3b82f6;
+      --blue-glow: rgba(59,130,246,0.12);
+      --green: #10b981;
+      --green-glow: rgba(16,185,129,0.12);
+      --gold: #f59e0b;
+      --gold-glow: rgba(245,158,11,0.12);
+      --purple: #8b5cf6;
+      --purple-glow: rgba(139,92,246,0.12);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-left h1 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+    }
+    .header-left .subtitle {
+      font-size: 11px;
+      color: var(--text-3);
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .header-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--text-3);
+      text-align: right;
+      line-height: 1.5;
+    }
+    .private-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(139,92,246,0.1);
+      border: 1px solid rgba(139,92,246,0.2);
+      border-radius: 4px;
+      font-size: 9px;
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .private-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Countdown */
+    .countdown-bar {
+      background: linear-gradient(135deg, var(--card) 0%, rgba(139,92,246,0.05) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .countdown-label {
+      font-size: 11px;
+      color: var(--text-2);
+    }
+    .countdown-timer {
+      display: flex;
+      gap: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .countdown-unit {
+      text-align: center;
+    }
+    .countdown-value {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1;
+    }
+    .countdown-suffix {
+      font-size: 9px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 4px;
+    }
+
+    /* Hero */
+    .hero {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: linear-gradient(145deg, var(--card) 0%, var(--bg) 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    .hero p {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .hero p + p { margin-top: 14px; }
+    .hero strong { color: var(--text); font-weight: 500; }
+    .hero em {
+      font-style: normal;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    /* Section */
+    .section { margin-bottom: 28px; }
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Project Cards - Expandable */
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .project-card:hover {
+      border-color: var(--border-hover);
+    }
+    .project-card.expanded {
+      border-color: var(--purple);
+      background: linear-gradient(145deg, var(--card) 0%, rgba(139,92,246,0.03) 100%);
+    }
+    .project-header {
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .project-header:hover {
+      background: var(--card-hover);
+    }
+    .project-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .project-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .project-title-text h3 {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .project-title-text .tagline {
+      font-size: 11px;
+      color: var(--text-3);
+    }
+    .project-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tag-tech { background: var(--blue-glow); color: var(--blue); }
+    .tag-saas { background: var(--green-glow); color: var(--green); }
+    .tag-impact { background: var(--gold-glow); color: var(--gold); }
+    .tag-music { background: var(--purple-glow); color: var(--purple); }
+    .tag-label { background: rgba(100,255,180,0.1); color: #64FFB4; }
+    .tag-nonprofit { background: rgba(100,180,255,0.1); color: #64B4FF; }
+
+    .expand-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-3);
+      transition: transform 0.3s ease;
+    }
+    .project-card.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+
+    .project-body {
+      display: none;
+      padding: 0 16px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .project-card.expanded .project-body {
+      display: block;
+    }
+    .project-content {
+      padding-top: 14px;
+    }
+    .project-content p {
+      font-size: 12px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .project-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .metric-box {
+      background: rgba(255,255,255,0.02);
+      border-radius: 6px;
+      padding: 10px 12px;
+    }
+    .metric-label {
+      font-size: 9px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .metric-value {
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .metric-value.green { color: var(--green); }
+
+    /* Two Tier Options */
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    @media (min-width: 540px) {
+      .options-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .option-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .option-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+    .option-card.recommended {
+      border-color: var(--green);
+      background: linear-gradient(145deg, var(--card) 0%, rgba(16,185,129,0.04) 100%);
+    }
+    .option-card.recommended::before {
+      content: 'RECOMMENDED';
+      position: absolute;
+      top: -9px;
+      left: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 1px;
+      background: var(--green);
+      color: var(--bg);
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .option-header {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .option-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .option-price {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+    .option-price .currency {
+      font-size: 14px;
+      color: var(--text-2);
+      font-weight: 400;
+    }
+    .option-subprice {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--text-3);
+      margin-top: 4px;
+    }
+    .option-body ul { list-style: none; }
+    .option-body li {
+      font-size: 11px;
+      color: var(--text-2);
+      padding: 5px 0;
+      padding-left: 18px;
+      position: relative;
+    }
+    .option-body li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--text-3);
+      font-size: 10px;
+    }
+    .option-body li.highlight::before { color: var(--green); }
+    .option-body li.highlight { color: var(--text); }
+    .option-body li strong { color: var(--text); font-weight: 500; }
+
+    .option-note {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 6px;
+      font-size: 10px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+    .option-note.green {
+      background: var(--green-glow);
+      color: var(--green);
+    }
+    .option-note em {
+      font-style: normal;
+      color: var(--text-2);
+    }
+
+    /* Credentials */
+    .credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .cred {
+      font-size: 10px;
+      color: var(--text-2);
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 4px;
+    }
+    .cred strong { color: var(--text); font-weight: 500; }
+
+    /* Wire Section */
+    .wire-section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+    .wire-section h4 {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .wire-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 480px) {
+      .wire-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .wire-block h5 {
+      font-size: 8px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .wire-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      font-size: 10px;
+    }
+    .wire-row span:first-child { color: var(--text-3); }
+    .wire-row span:last-child {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--text);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .wire-row span:last-child:hover { color: var(--blue); }
+    .wire-row.dim span { font-size: 9px; color: var(--text-3); cursor: default; }
+
+    .crypto-section {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .crypto-row {
+      margin-bottom: 10px;
+    }
+    .crypto-label {
+      font-size: 8px;
+      color: var(--text-3);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .crypto-addr {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      color: var(--text-2);
+      word-break: break-all;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding: 6px 8px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 4px;
+    }
+    .crypto-addr:hover { color: var(--blue); }
+
+    .paypal-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      background: #0070ba;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 14px;
+    }
+    .paypal-button:hover {
+      background: #005ea6;
+      transform: translateY(-1px);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 24px;
+      background: linear-gradient(145deg, var(--card) 0%, var(--bg) 100%);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+    .cta p {
+      font-size: 14px;
+      color: var(--text-2);
+      margin-bottom: 8px;
+    }
+    .cta p strong { color: var(--text); font-weight: 500; }
+    .cta .action {
+      font-size: 11px;
+      color: var(--text-3);
+      margin-top: 12px;
+    }
+    .cta .action a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    .cta .action a:hover { text-decoration: underline; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 9px;
+      color: var(--text-3);
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .footer a {
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer a:hover { color: var(--text-2); }
+    .footer .confidential {
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Toast */
+    .copy-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--green);
+      color: var(--bg);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .page { padding: 24px 16px 48px; }
+      .hero { padding: 18px; }
+      .option-price { font-size: 26px; }
+      .countdown-timer { gap: 12px; }
+      .countdown-value { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Raul Lee Bhaskaran</h1>
+        <div class="subtitle">Private Funding Brief</div>
+      </div>
+      <div class="header-meta">
+        <div class="private-badge">Invitation Only</div>
+        <div>January 2026</div>
+      </div>
+    </div>
+
+    <!-- Countdown -->
+    <div class="countdown-bar">
+      <div class="countdown-label">Access window closes</div>
+      <div class="countdown-timer" id="countdown">
+        <div class="countdown-unit">
+          <div class="countdown-value" id="days">--</div>
+          <div class="countdown-suffix">Days</div>
+        </div>
+        <div class="countdown-unit">
+          <div class="countdown-value" id="hours">--</div>
+          <div class="countdown-suffix">Hours</div>
+        </div>
+        <div class="countdown-unit">
+          <div class="countdown-value" id="mins">--</div>
+          <div class="countdown-suffix">Mins</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <p>
+        The infrastructure is built. Legal practice operating. Label registered with ASCAP. Tech products deployed and generating revenue. Album mastered and launching January 10th.
+      </p>
+      <p>
+        This is not a request for startup capital. This is a <em>90-day execution window</em>—stepping back from billable hours to focus entirely on work that compounds. The window is the album launch. What follows is the breakdown.
+      </p>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="section">
+      <div class="section-label">The Portfolio</div>
+
+      <!-- Mat Selamat -->
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon" style="background: rgba(100,212,255,0.1);">
+              <span style="color: #64D4FF;">&#9878;</span>
+            </div>
+            <div class="project-title-text">
+              <h3>Mat Selamat</h3>
+              <div class="tagline">AI-Powered Small Claims Platform</div>
+            </div>
+          </div>
+          <span class="project-tag tag-tech">Tech</span>
+          <div class="expand-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p>
+              Production-ready legal-tech platform that guides Malaysians through small claims court. AI-powered claim drafting, quality analysis, and court-ready document generation. Currently live at <strong>matselamat.com</strong> with Stripe payments integrated.
+            </p>
+            <p>
+              Built on Claude for legal reasoning and Gemini for conversational voice interface. Bilingual (English/Malay). RM79 per claim.
+            </p>
+            <div class="project-metrics">
+              <div class="metric-box">
+                <div class="metric-label">Needed</div>
+                <div class="metric-value">MYR 10,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Self-Sustaining At</div>
+                <div class="metric-value green">~130 paying users</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reputation Buddy -->
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon" style="background: rgba(16,185,129,0.1);">
+              <span style="color: #10b981;">&#9733;</span>
+            </div>
+            <div class="project-title-text">
+              <h3>Reputation Buddy</h3>
+              <div class="tagline">Review Monitoring SaaS</div>
+            </div>
+          </div>
+          <span class="project-tag tag-saas">SaaS</span>
+          <div class="expand-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p>
+              Real-time review monitoring for business owners. Alerts via WhatsApp when a low-scoring review appears, enabling immediate remediation before reputation damage compounds. AI-powered response suggestions.
+            </p>
+            <p>
+              Full-stack: Next.js frontend, Express backend, PostgreSQL, Redis queue, Stripe billing. Monthly subscription model.
+            </p>
+            <div class="project-metrics">
+              <div class="metric-box">
+                <div class="metric-label">Needed</div>
+                <div class="metric-value">MYR 6,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Self-Sustaining At</div>
+                <div class="metric-value green">~50 subscribers</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Farizan.my -->
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon" style="background: rgba(245,158,11,0.1);">
+              <span style="color: #f59e0b;">&#10047;</span>
+            </div>
+            <div class="project-title-text">
+              <h3>Farizan.my (AUTYST)</h3>
+              <div class="tagline">Neuroscience-Based Autism Resources</div>
+            </div>
+          </div>
+          <span class="project-tag tag-impact">Impact</span>
+          <div class="expand-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p>
+              Educational platform translating neuroscience research into accessible resources for the autism community. Built on my MSc Applied Neuroscience background from King's College London.
+            </p>
+            <p>
+              Optimized for viral sharing within trusted networks. When a trusted source shares, conversion is near-immediate. Integrated payment options for rapid fundraising.
+            </p>
+            <div class="project-metrics">
+              <div class="metric-box">
+                <div class="metric-label">Needed</div>
+                <div class="metric-value">MYR 4,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Self-Sustaining When</div>
+                <div class="metric-value green">Trusted shares convert</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cliff Coffin -->
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon" style="background: rgba(180,100,255,0.1);">
+              <span style="color: #B464FF;">&#9835;</span>
+            </div>
+            <div class="project-title-text">
+              <h3>Cliff Coffin</h3>
+              <div class="tagline">Album "Fault Tolerance" — Jan 10</div>
+            </div>
+          </div>
+          <span class="project-tag tag-music">Music</span>
+          <div class="expand-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p>
+              New artist project. Darker palettes, immersive sonic architecture. Album mastered and ready. Launch set for January 10, 2026, at <strong>cliffcoffin.com</strong>.
+            </p>
+            <p>
+              180g vinyl pressing (200 units), music videos, PR campaign for playlist pitching. Vinyl retails at MYR 140/unit. Break-even: 43 units.
+            </p>
+            <div class="project-metrics">
+              <div class="metric-box">
+                <div class="metric-label">Needed</div>
+                <div class="metric-value">MYR 12,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Returns Via</div>
+                <div class="metric-value green">Sales, sync, shows</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sync Primitive -->
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon" style="background: rgba(100,255,180,0.1);">
+              <span style="color: #64FFB4;">&#9836;</span>
+            </div>
+            <div class="project-title-text">
+              <h3>Sync Primitive</h3>
+              <div class="tagline">Electronic Label & Sync Licensing</div>
+            </div>
+          </div>
+          <span class="project-tag tag-label">Label</span>
+          <div class="expand-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p>
+              Independent electronic imprint. ASCAP-registered label. Raul Lee Bhaskaran registered as songwriter with ASCAP. Productions in progress. Negotiating residency at significant KL venue.
+            </p>
+            <p>
+              Building sync-ready catalog for film, TV, and advertising placements. Each placement: MYR 2,000–15,000. Inaugural showcase "The Crossing" at ADE 2025 completed successfully.
+            </p>
+            <div class="project-metrics">
+              <div class="metric-box">
+                <div class="metric-label">Needed</div>
+                <div class="metric-value">MYR 6,000</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Returns Via</div>
+                <div class="metric-value green">Sync placements</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALIM.my -->
+      <div class="project-card" onclick="toggleProject(this)">
+        <div class="project-header">
+          <div class="project-title-group">
+            <div class="project-icon" style="background: rgba(100,180,255,0.1);">
+              <span style="color: #64B4FF;">&#9879;</span>
+            </div>
+            <div class="project-title-text">
+              <h3>ALIM.my</h3>
+              <div class="tagline">Art & Law Initiative Malaysia</div>
+            </div>
+          </div>
+          <span class="project-tag tag-nonprofit">Non-Profit</span>
+          <div class="expand-icon">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-content">
+            <p>
+              Pro bono legal support for Malaysia's artists and cultural workers. Contract disputes, IP issues, policy advocacy. I serve as a director.
+            </p>
+            <p>
+              Featured in The Star. Over 25 working partnerships established. Sustained by revenue from the commercial ventures above—purpose funded by profit.
+            </p>
+            <div class="project-metrics">
+              <div class="metric-box">
+                <div class="metric-label">Partnerships</div>
+                <div class="metric-value">25+</div>
+              </div>
+              <div class="metric-box">
+                <div class="metric-label">Sustained By</div>
+                <div class="metric-value green">Portfolio revenue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Two Paths -->
+    <div class="section">
+      <div class="section-label">Two Paths</div>
+      <div class="options-grid">
+
+        <!-- Option A: Equity -->
+        <div class="option-card">
+          <div class="option-header">
+            <div class="option-title">Equity Investor</div>
+            <div class="option-price"><span class="currency">USD</span> 10,000</div>
+            <div class="option-subprice">≈ MYR 45,000</div>
+          </div>
+          <div class="option-body">
+            <ul>
+              <li><strong>8% of Mat Selamat Sdn Bhd</strong></li>
+              <li>MYR 500,000 pre-money valuation</li>
+              <li>Shareholder agreement documentation</li>
+              <li>Quarterly investor updates</li>
+              <li>Standard drag-along / tag-along rights</li>
+              <li>Board observer rights</li>
+            </ul>
+          </div>
+          <div class="option-note">
+            Direct ownership. Formal documentation. Pure financial relationship.
+          </div>
+        </div>
+
+        <!-- Option B: Founding Patron -->
+        <div class="option-card recommended">
+          <div class="option-header">
+            <div class="option-title">Founding Patron</div>
+            <div class="option-price"><span class="currency">USD</span> 8,000</div>
+            <div class="option-subprice">≈ MYR 36,000</div>
+          </div>
+          <div class="option-body">
+            <ul>
+              <li class="highlight"><strong>First right to convert to 8% equity</strong></li>
+              <li class="highlight">At today's valuation—anytime, your call</li>
+              <li><strong>VIP + backstage access</strong> at all events, lifetime</li>
+              <li>Founding Patron credit across all properties</li>
+              <li>Album credit (if desired)</li>
+              <li>Private listening sessions, early releases</li>
+              <li>Annual "state of the empire" call</li>
+              <li>Advisory input on ALIM & Farizan direction</li>
+              <li>No paperwork required now</li>
+            </ul>
+          </div>
+          <div class="option-note green">
+            <em>Same upside. Lower price. More access.</em><br>
+            If it grows, convert. If not, you backed work that matters.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Credentials -->
+    <div class="section">
+      <div class="section-label">Credentials</div>
+      <div class="credentials">
+        <div class="cred"><strong>10+</strong> years litigation</div>
+        <div class="cred"><strong>MSc</strong> Applied Neuroscience, King's College London</div>
+        <div class="cred"><strong>Award-winning</strong> boutique firm (APAC 2022, 2023, 2025)</div>
+        <div class="cred"><strong>The Crossing</strong> ADE 2025</div>
+        <div class="cred"><strong>ASCAP</strong> registered songwriter</div>
+        <div class="cred"><strong>OUTPOST</strong> globally-charting podcast</div>
+      </div>
+    </div>
+
+    <!-- Wire Details -->
+    <div class="section">
+      <div class="section-label">Contribution Methods</div>
+      <div class="wire-section">
+        <h4>Wire Details</h4>
+        <div class="wire-grid">
+          <div class="wire-block">
+            <h5>US Bank Transfer</h5>
+            <div class="wire-row">
+              <span>Bank</span>
+              <span onclick="copyText('Community Federal Savings Bank')">Community Federal Savings Bank</span>
+            </div>
+            <div class="wire-row">
+              <span>Name</span>
+              <span onclick="copyText('Raul Lee Bhaskaran')">Raul Lee Bhaskaran</span>
+            </div>
+            <div class="wire-row">
+              <span>Account</span>
+              <span onclick="copyText('8313831843')">8313831843</span>
+            </div>
+            <div class="wire-row">
+              <span>Routing</span>
+              <span onclick="copyText('026073150')">026073150</span>
+            </div>
+            <div class="wire-row">
+              <span>SWIFT</span>
+              <span onclick="copyText('CMFGUS33')">CMFGUS33</span>
+            </div>
+            <div class="wire-row dim">
+              <span>Address</span>
+              <span>89-16 Jamaica Ave, Woodhaven NY 11421</span>
+            </div>
+          </div>
+          <div class="wire-block">
+            <h5>Cryptocurrency</h5>
+            <div class="crypto-row">
+              <div class="crypto-label">Bitcoin (BTC)</div>
+              <div class="crypto-addr" onclick="copyText('bc1q2wys5986kzfqq8vrp8zqlauvzxn0pwzrylaqa2')">bc1q2wys5986kzfqq8vrp8zqlauvzxn0pwzrylaqa2</div>
+            </div>
+            <div class="crypto-row">
+              <div class="crypto-label">Ethereum (ETH)</div>
+              <div class="crypto-addr" onclick="copyText('0x167Db46C1D1CaC983Ed97BACe4AA96D8db2d3d65')">0x167Db46C1D1CaC983Ed97BACe4AA96D8db2d3d65</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="paypal-button" onclick="window.open('https://paypal.me/raulleemusic', '_blank')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.775.775 0 0 1 .765-.638h6.893c2.537 0 4.588.826 5.467 2.644.393.812.547 1.717.456 2.691-.036.391-.098.762-.186 1.116-.563 2.24-1.865 3.722-3.877 4.407-1.02.347-2.181.52-3.472.52H8.674a.776.776 0 0 0-.765.638l-.833 5.24z"/>
+          </svg>
+          Contribute via PayPal
+        </button>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <p><strong>The work is ready. This is the execution window.</strong></p>
+      <p>All properties live. All systems operational. Just need the runway.</p>
+      <div class="action">
+        Confirm via <a href="https://wa.me/60123456789" target="_blank">WhatsApp</a> or reply directly. Documentation ready to send.
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-links">
+        <a href="https://cliffcoffin.com" target="_blank">cliffcoffin.com</a>
+        <span>·</span>
+        <a href="https://matselamat.com" target="_blank">matselamat.com</a>
+        <span>·</span>
+        <a href="https://syncprimitive.com" target="_blank">syncprimitive.com</a>
+        <span>·</span>
+        <a href="https://alim.my" target="_blank">alim.my</a>
+        <span>·</span>
+        <a href="https://raul.my" target="_blank">raul.my</a>
+      </div>
+      <div class="confidential">Confidential · January 2026</div>
+    </div>
+
+  </div>
+
+  <div class="copy-toast" id="toast">Copied to clipboard</div>
+
+  <script>
+    // Countdown Timer - January 15, 2026
+    const deadline = new Date('2026-01-15T23:59:59').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = deadline - now;
+
+      if (distance < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('mins').textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('mins').textContent = mins;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    // Project Card Toggle
+    function toggleProject(card) {
+      // Close all other cards
+      document.querySelectorAll('.project-card').forEach(c => {
+        if (c !== card) c.classList.remove('expanded');
+      });
+      // Toggle clicked card
+      card.classList.toggle('expanded');
+    }
+
+    // Copy to clipboard
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2000);
+      });
+    }
+  </script>
+</body>
+</html>
