@@ -572,6 +572,28 @@
       line-height: 1.5;
     }
 
+    /* Fine Print */
+    .fine-print {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .fine-print p {
+      font-size: 11px;
+      color: var(--text-2);
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .fine-print p:last-child {
+      margin-bottom: 0;
+      font-size: 10px;
+      color: var(--text-3);
+    }
+    .fine-print strong {
+      color: var(--text);
+    }
+
     /* What You'll Miss - Loss Aversion */
     .loss-section {
       background: linear-gradient(145deg, rgba(239,68,68,0.03) 0%, var(--card) 100%);
@@ -1354,13 +1376,24 @@
       </div>
     </div>
 
+    <!-- Fine Print -->
+    <div class="section">
+      <div class="section-label">The Details</div>
+      <div class="fine-print">
+        <p>Raising <strong>USD 50,000–70,000</strong> from a small founding circle of 6–8 individuals.</p>
+        <p><strong>Equity tier:</strong> Formal shareholder agreement with standard protections.</p>
+        <p><strong>Patron tier:</strong> Contribution with perks—convertible to equity at your discretion, anytime.</p>
+        <p>This is early-stage. Risk is real. The perks are structured to deliver standalone value regardless of business outcome.</p>
+      </div>
+    </div>
+
     <!-- Loss Aversion Section -->
     <div class="loss-section">
       <h4>After January 15</h4>
       <ul>
         <li>This page becomes a private archive—no new participants</li>
         <li>Equity conversion option expires at current valuation</li>
-        <li>Founding Patron credits locked to existing circle</li>
+        <li>Founding Supporter credits locked to existing circle</li>
         <li>Album launch proceeds without additional backers</li>
         <li>Next raise (if any) at significantly higher valuation</li>
       </ul>
